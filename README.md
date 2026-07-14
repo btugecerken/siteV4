@@ -55,6 +55,19 @@ Bu sürüm boyunca;
 - kod yapısı sadeleştirildi,
 - mobil uyumluluk artırıldı.
 
+  ## V4 Neden Önemlidir?
+
+V4, BTÜ Geçerken ekosisteminin ortak tasarım diline geçtiği ilk sürümdür.
+
+Bu sürüm ile birlikte;
+
+- web sitesi sadeleştirildi,
+- tüm sayfalar ortak bir kullanıcı deneyimine kavuştu,
+- blog sistemi eklendi,
+- yapay zekâ platformu bağımsız hale getirildi.
+
+V4, sonraki V4.5 ve V5 sürümlerinin temelini oluşturmaktadır.
+
 ## Durum
 
 Bu depo BTÜ Geçerken Web Sitesi'nin V4 sürümünü içermektedir.
