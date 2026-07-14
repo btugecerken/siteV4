@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTÜ OBS Kullanım Rehberi | BTU Geçerken</title>
+    <link href="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" rel="icon" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Noto+Serif+TR:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --emerald:    #1a5c3a;
+            --emerald-d:  #0f3d26;
+            --gold:       #c9a84c;
+            --cream:      #faf6ef;
+            --ink:        #1a1a18;
+            --ink-soft:   #3d3d38;
+            --muted:      #7a7a72;
+            --white:      #ffffff;
+            --shadow:     0 10px 30px rgba(26,92,58,0.08);
+            --border:     rgba(201,168,76,0.2);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Serif TR', serif; background: var(--cream); color: var(--ink); line-height: 1.85; padding-top: 80px; }
+        
+        /* ═══ HEADER ═══ */
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,246,239,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 78px; display: flex; align-items: center; justify-content: space-between; }
+        .logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-wrap img { height: 46px; }
+        .logo-text .univ { display: block; font-family: 'Syne', sans-serif; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+        .logo-text .comm { display: block; font-family: 'Amiri', serif; font-size: 16px; color: var(--emerald); font-weight: 800; }
+        nav { display: flex; gap: 8px; align-items: center; }
+        nav a { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; padding: 10px 14px; border-radius: 8px; transition: all .2s; }
+        nav a:hover { color: var(--emerald); background: rgba(26,92,58,0.05); }
+        .btn-login { border: 1.5px solid var(--emerald); color: var(--emerald) !important; border-radius: 50px !important; }
+        .btn-login:hover { background: var(--emerald); color: white !important; }
+        #mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        #mobile-menu-btn span { width: 25px; height: 3px; background: var(--emerald); border-radius: 2px; }
+
+        /* ═══ BLOG CONTENT ═══ */
+        .blog-container { max-width: 860px; margin: 40px auto 80px; background: var(--white); padding: 50px 60px; border-radius: 20px; box-shadow: var(--shadow); position: relative; }
+        .hero-section { border-bottom: 1px solid #eee; padding-bottom: 30px; margin-bottom: 40px; }
+        .badge { display: inline-block; background: rgba(26,92,58,0.08); color: var(--emerald); padding: 6px 14px; border-radius: 50px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+        h1 { font-family: 'Amiri', serif; font-size: 42px; line-height: 1.25; margin-bottom: 20px; color: var(--ink); }
+        .meta-info { font-family: 'Syne', sans-serif; font-size: 13px; color: var(--muted); display: flex; gap: 20px; margin-bottom: 20px; }
+        .meta-info i { color: var(--gold); margin-right: 5px; }
+        .summary-box { font-style: italic; border-left: 3px solid var(--gold); padding: 5px 0 5px 20px; color: var(--ink-soft); margin-bottom: 30px; }
+        .toc-box { background: #f9f8f4; border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin: 40px 0; }
+        .toc-title { font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 14px; letter-spacing: 0.1em; color: var(--emerald); margin-bottom: 15px; border-bottom: 2px solid var(--emerald); display: inline-block; }
+        .toc-box ul { list-style: none; }
+        .toc-box li { margin-bottom: 10px; }
+        .toc-box a { text-decoration: none; color: var(--ink-soft); font-weight: 500; font-size: 15px; transition: color 0.2s; display: flex; align-items: center; gap: 10px; }
+        .toc-box a:hover { color: var(--emerald); }
+        .toc-box i { font-size: 10px; color: var(--gold); }
+        .content p { font-size: 17px; margin-bottom: 25px; text-align: justify; }
+        h2 { font-family: 'Amiri', serif; font-size: 28px; margin: 50px 0 25px; color: var(--emerald-d); position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--gold); border-radius: 2px; }
+        h3 { font-family: 'Amiri', serif; font-size: 24px; margin: 35px 0 15px; color: var(--ink); border-left: 4px solid var(--emerald); padding-left: 15px; }
+        .sources-section { margin-top: 60px; padding-top: 30px; border-top: 2px dashed #eee; }
+        .sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 20px; }
+        .source-tag { background: white; border: 1px solid #eee; padding: 10px 15px; border-radius: 8px; text-decoration: none; color: var(--emerald); font-size: 13px; font-family: 'Syne', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+        .source-tag:hover { background: var(--emerald); color: white; transform: translateY(-2px); }
+        @media (max-width: 992px) { nav { display: none; } #mobile-menu-btn { display: flex; } }
+        @media (max-width: 768px) { .blog-container { padding: 30px 20px; border-radius: 0; margin: 0; } h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" alt="BTÜ Geçerken">
+      <div class="logo-text">
+        <span class="univ">Bursa Teknik Üniversitesi</span>
+        <span class="comm">Geçerken Topluluğu</span>
+      </div>
+    </a>
+
+    <nav id="main-nav">
+      <a href="index.html" class="active">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+	  <a href="btugecerkenblog.html">BTU Geçerken BLOG</a>
+      <a href="https://btugecerkenai.btugecerken.com">BTU GEÇERKEN AI</a>
+      <a href="ekibimiz.html">Ekibimiz</a>
+      <a href="https://account.btugecerken.com" target="_blank" class="btn-login">BTU GEÇERKEN ACCOUNT</a>
+    </nav>
+
+    <button id="mobile-menu-btn" aria-label="Menüyü aç/kapat">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<article class="blog-container">
+    <div class="hero-section">
+        <span class="badge">Akademik Rehber</span>
+        <h1>BTÜ OBS Rehberi: Akademik Süreçleri Yönetme Sanatı</h1>
+        <div class="meta-info">
+            <span><i class="far fa-user"></i> Geçerken Editör Ekibi</span>
+            <span><i class="far fa-calendar"></i> 06 Temmuz 2026</span>
+            <span><i class="far fa-clock"></i> 5 dk okuma</span>
+        </div>
+        <div class="summary-box">
+            Ders kaydından transkript talebine, not takibinden şifre işlemlerine kadar BTÜ Öğrenci Bilgi Sistemi (OBS) hakkında bilmeniz gereken her şey bu rehberde.
+        </div>
+    </div>
+
+    <!-- İÇİNDEKİLER -->
+    <div class="toc-box">
+        <span class="toc-title">İçindekiler</span>
+        <ul>
+            <li><a href="#obs-nedir"><i class="fas fa-chevron-right"></i> OBS Nedir?</a></li>
+            <li><a href="#giris"><i class="fas fa-chevron-right"></i> Sisteme Giriş</a></li>
+            <li><a href="#ders-kaydi"><i class="fas fa-chevron-right"></i> Ders Kaydı İşlemleri</a></li>
+            <li><a href="#transkript"><i class="fas fa-chevron-right"></i> Transkript Talebi</a></li>
+            <li><a href="#not-goruntuleme"><i class="fas fa-chevron-right"></i> Not Görüntüleme</a></li>
+            <li><a href="#sifre-islemleri"><i class="fas fa-chevron-right"></i> Şifre İşlemleri</a></li>
+            <li><a href="#sss"><i class="fas fa-chevron-right"></i> Sık Sorulan Sorular</a></li>
+            <li><a href="#btu-gecerken-yorum"><i class="fas fa-chevron-right"></i> BTÜ Geçerken Yorumu</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2 id="obs-nedir">OBS Nedir?</h2>
+        <p>Öğrenci Bilgi Sistemi (OBS), üniversite hayatınız boyunca tüm akademik verilerinizin tutulduğu resmi dijital platformdur. Ders kayıtları, sınav sonuçları, harç ödemeleri ve mezuniyet işlemleri gibi tüm süreçler bu sistem üzerinden yürütülür. BTÜ'de OBS, üniversiteye ilk kayıt olduğunuz andan mezuniyetinize kadar en sık kullanacağınız araçtır.</p>
+
+        <h2 id="giris">Sisteme Giriş</h2>
+        <p>BTÜ OBS sistemine erişim için <a href="https://obs.btu.edu.tr" target="_blank">obs.btu.edu.tr</a> adresini kullanmanız gerekmektedir. Üniversite tarafından size tanımlanan öğrenci numarası ve beraberinde gelen şifre ile sisteme ilk girişinizi gerçekleştirebilirsiniz. Ayrıca, e-Devlet kapısı üzerinden de tek tıkla güvenli giriş yapma imkanınız bulunmaktadır.</p>
+
+        <h2 id="ders-kaydi">Ders Kaydı İşlemleri</h2>
+        <p>Her dönemin başında, akademik takvimde belirtilen tarihlerde ders seçimi yapmanız zorunludur. OBS üzerinden "Ders Seçme" ekranına girerek müfredatınızda bulunan zorunlu ve seçmeli dersleri sepetinize ekleyebilirsiniz. Ders kaydınızın geçerli olması için seçtiğiniz dersleri sistem üzerinden onaylamanız ve ardından danışman onayına göndermeniz kritik önem taşır.</p>
+
+        <h2 id="transkript">Transkript Talebi</h2>
+        <p>Akademik geçmişinizi gösteren transkript belgesine ihtiyaç duyduğunuzda, OBS üzerinden online talep oluşturabilirsiniz. Sistemin "Belge Talepleri" kısmından e-imzalı transkript isteyebilir, hazırlanan belgenizi barkodlu bir şekilde PDF olarak indirerek resmi işlemlerinizde kullanabilirsiniz.</p>
+
+        <h2 id="not-goruntuleme">Not Görüntüleme</h2>
+        <p>Vize, final ve bütünleme sınav sonuçları, öğretim görevlileri tarafından sisteme girildiği anda OBS üzerinden ilan edilir. "Not Kartı" veya "Dönem Notları" sekmelerinden her dersin başarı notunu, harf notunu ve ağırlıklı genel not ortalamanızı (GNO) anlık olarak takip edebilirsiniz.</p>
+
+        <h2 id="sifre-islemleri">Şifre İşlemleri</h2>
+        <p>Güvenliğiniz için şifrenizi düzenli aralıklarla değiştirmeniz önerilir. Şifrenizi unutmanız durumunda, giriş ekranındaki "Şifremi Unuttum" butonunu kullanarak kayıtlı e-posta adresiniz veya telefon numaranız üzerinden yeni şifre oluşturabilirsiniz. Ayrıca kimlik doğrulama süreçleri için e-Devlet girişi her zaman en pratik alternatiftir.</p>
+
+        <h2 id="sss">Sık Sorulan Sorular</h2>
+        <h3>Danışman onayı neden önemli?</h3>
+        <p>Ders seçimi yaptıktan sonra danışmanınız seçtiğiniz derslerin müfredata uygunluğunu denetler. Onay verilmediği takdirde ders kaydınız tamamlanmamış sayılır ve derslere katılamazsınız.</p>
+        
+        <h3>Ders seçimi ne zaman başlar?</h3>
+        <p>Her yıl yayınlanan BTÜ Akademik Takvimi'nde Güz ve Bahar yarıyılı ders kayıt tarihleri net olarak belirtilir. Bu tarihleri kaçırmamak akademik başarınız için elzemdir.</p>
+
+        <!-- Önemli: Geçerken Yorumu Bölümü -->
+      <h3 id="btu-gecerken-yorum">BTÜ Geçerken Yorumu</h3>
+        <p>OBS, özellikle ders seçimi sabahlarında biraz stresli olsa da yoğun dönemlerde kısa süreli yoğunluk yaşanabilmektedir. Bizim tavsiyemiz; ders seçimi başlamadan 5 dakika önce sistemde hazır bulunmanız ve danışman onayınızı gün içinde mutlaka kontrol etmeniz. Ayrıca, notların açıklandığı günlerde heyecandan sistemi çökertmemeye çalışalım!</p>
+
+        <div class="sources-section">
+            <span class="toc-title">Önemli Bağlantılar</span>
+            <div class="sources-grid">
+                <a href="https://obs.btu.edu.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> OBS Giriş</a>
+                <a href="https://oidb.btu.edu.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> Öğrenci İşleri</a>
+                <a href="https://akademiktakvim.btu.edu.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> Akademik Takvim</a>
+          </div>
+      </div>
+    </div>
+</article>
+
+<script>
+    document.querySelectorAll('.toc-box a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerOffset = 100;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

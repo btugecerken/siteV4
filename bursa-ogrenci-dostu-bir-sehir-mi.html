@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bursa'da Üniversite Okumak: Öğrenci Dostu Bir Şehir mi? | BTÜ Geçerken</title>
+    <link href="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" rel="icon" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Noto+Serif+TR:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --emerald:    #1a5c3a;
+            --emerald-d:  #0f3d26;
+            --gold:       #c9a84c;
+            --cream:      #faf6ef;
+            --ink:        #1a1a18;
+            --ink-soft:   #3d3d38;
+            --muted:      #7a7a72;
+            --white:      #ffffff;
+            --shadow:     0 10px 30px rgba(26,92,58,0.08);
+            --border:     rgba(201,168,76,0.2);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Serif TR', serif; background: var(--cream); color: var(--ink); line-height: 1.85; padding-top: 80px; }
+
+        /* ═══ HEADER ═══ */
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,246,239,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 78px; display: flex; align-items: center; justify-content: space-between; }
+        .logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-wrap img { height: 46px; }
+        .logo-text .univ { display: block; font-family: 'Syne', sans-serif; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+        .logo-text .comm { display: block; font-family: 'Amiri', serif; font-size: 16px; color: var(--emerald); font-weight: 800; }
+
+        nav { display: flex; gap: 8px; align-items: center; }
+        nav a { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; padding: 10px 14px; border-radius: 8px; transition: all .2s; }
+        nav a:hover { color: var(--emerald); background: rgba(26,92,58,0.05); }
+        nav a.active { color: var(--emerald); background: rgba(26,92,58,0.08); }
+        .btn-login { border: 1.5px solid var(--emerald); color: var(--emerald) !important; border-radius: 50px !important; }
+        .btn-login:hover { background: var(--emerald); color: white !important; }
+
+        /* ═══ BLOG CONTENT ═══ */
+        .blog-container { max-width: 860px; margin: 40px auto 80px; background: var(--white); padding: 50px 60px; border-radius: 20px; box-shadow: var(--shadow); position: relative; }
+
+        .hero-section { border-bottom: 1px solid #eee; padding-bottom: 30px; margin-bottom: 40px; }
+        .badge { display: inline-block; background: rgba(26,92,58,0.08); color: var(--emerald); padding: 6px 14px; border-radius: 50px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+        h1 { font-family: 'Amiri', serif; font-size: 42px; line-height: 1.25; margin-bottom: 20px; color: var(--ink); }
+        .meta-info { font-family: 'Syne', sans-serif; font-size: 13px; color: var(--muted); display: flex; gap: 20px; margin-bottom: 20px; }
+        .meta-info i { color: var(--gold); margin-right: 5px; }
+
+        /* TOC */
+        .toc-box { background: #f9f8f4; border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin: 40px 0; }
+        .toc-title { font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 14px; letter-spacing: 0.1em; color: var(--emerald); margin-bottom: 15px; border-bottom: 2px solid var(--emerald); display: inline-block; }
+        .toc-box ul { list-style: none; }
+        .toc-box li { margin-bottom: 10px; }
+        .toc-box a { text-decoration: none; color: var(--ink-soft); font-weight: 500; font-size: 15px; transition: color 0.2s; display: flex; align-items: center; gap: 10px; }
+        .toc-box a:hover { color: var(--emerald); }
+        .toc-box i { font-size: 10px; color: var(--gold); }
+
+        /* ARTICLE BODY */
+        .content p { font-size: 17px; margin-bottom: 25px; text-align: justify; }
+        h2 { font-family: 'Amiri', serif; font-size: 28px; margin: 50px 0 25px; color: var(--emerald-d); position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--gold); border-radius: 2px; }
+        h3 { font-family: 'Amiri', serif; font-size: 24px; margin: 35px 0 15px; color: var(--ink); border-left: 4px solid var(--emerald); padding-left: 15px; }
+
+        /* IMAGES */
+        .article-img { width: 100%; border-radius: 15px; margin: 40px 0; box-shadow: 0 15px 45px rgba(0,0,0,0.1); overflow: hidden; background: #eee; min-height: 200px; }
+        .article-img img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+        .article-img:hover img { transform: scale(1.02); }
+        .img-caption { text-align: center; font-size: 13px; color: var(--muted); margin-top: 10px; font-style: italic; font-family: 'Syne', sans-serif; }
+
+        /* FOOTER / SOURCES */
+        .sources-section { margin-top: 60px; padding-top: 30px; border-top: 2px dashed #eee; }
+        .sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 20px; }
+        .source-tag { background: white; border: 1px solid #eee; padding: 10px 15px; border-radius: 8px; text-decoration: none; color: var(--emerald); font-size: 13px; font-family: 'Syne', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+        .source-tag:hover { background: var(--emerald); color: white; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .blog-container { padding: 30px 20px; border-radius: 0; margin-top: 0; }
+            h1 { font-size: 32px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" alt="BTÜ Geçerken">
+      <div class="logo-text">
+        <span class="univ">Bursa Teknik Üniversitesi</span>
+        <span class="comm">Geçerken Topluluğu</span>
+      </div>
+    </a>
+
+    <nav id="main-nav">
+      <a href="index.html" class="active">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+	  <a href="btugecerkenblog.html">BTU Geçerken BLOG</a>
+      <a href="https://btugecerkenai.btugecerken.com">BTU GEÇERKEN AI</a>
+      <a href="ekibimiz.html">Ekibimiz</a>
+      <a href="https://account.btugecerken.com" target="_blank" class="btn-login">BTU GEÇERKEN ACCOUNT</a>
+    </nav>
+
+    <button id="mobile-menu-btn" aria-label="Menüyü aç/kapat">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<article class="blog-container">
+    <div class="hero-section">
+        <span class="badge">Şehir Rehberi</span>
+        <h1>Bursa'da Üniversite Okumak: Öğrenci Dostu Bir Şehir mi?</h1>
+        <div class="meta-info">
+            <span><i class="far fa-user"></i> Geçerken Editör Ekibi</span>
+            <span><i class="far fa-calendar"></i> 06 Temmuz 2026</span>
+            <span><i class="far fa-clock"></i> 8 dk okuma</span>
+        </div>
+        <p style="font-style: italic; border-left: 3px solid var(--gold); padding-left: 20px; color: var(--ink-soft);">Bursa’yı üniversite öğrencisi açısından ulaşım, yaşam, eğitim ve kariyer olanaklarıyla detaylı bir şekilde değerlendiriyoruz.</p>
+    </div>
+
+    <!-- İÇİNDEKİLER -->
+    <div class="toc-box">
+        <span class="toc-title">İçindekiler</span>
+        <ul>
+            <li><a href="#tarihce"><i class="fas fa-chevron-right"></i> Bursa: Tarihi, Konumu ve Genel Yapısı</a></li>
+            <li><a href="#universite-sehri"><i class="fas fa-chevron-right"></i> Bursa Bir Üniversite Şehri mi?</a></li>
+            <li><a href="#imkanlar"><i class="fas fa-chevron-right"></i> Bursa Öğrencilere Neler Sunuyor?</a></li>
+            <li><a href="#btu-bakis"><i class="fas fa-chevron-right"></i> BTÜ Açısından Bursa</a></li>
+            <li><a href="#sonuc"><i class="fas fa-chevron-right"></i> Sonuç ve Değerlendirme</a></li>
+            <li><a href="#kaynakca"><i class="fas fa-chevron-right"></i> Kaynakça</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2 id="tarihce">Bursa: Tarihi, Konumu ve Genel Yapısı</h2>
+        <p>Bursa, Marmara Bölgesi'nin güneyinde yer alan ve Türkiye'nin ekonomik, kültürel ve tarihi açıdan öne çıkan şehirlerinden biridir. Tarih boyunca birçok medeniyete ev sahipliği yapan şehir, Osmanlı Devleti'nin ilk başkenti olması nedeniyle Türk tarihinde önemli bir yere sahiptir.</p>
+
+        <div class="article-img">
+            <img src="https://images.unsplash.com/photo-1549643276-fdf2fab574f5?q=80&w=1200&auto=format&fit=crop" alt="Bursa Tarihi">
+            <div class="img-caption">Osmanlı'nın izlerini taşıyan Bursa'nın tarihi dokusu.</div>
+        </div>
+
+        <p>Bursa, Marmara Bölgesi'nin güneyinde yer alan ve Türkiye'nin ekonomik, kültürel ve tarihi açıdan öne çıkan şehirlerinden biridir. Tarih boyunca birçok medeniyete ev sahipliği yapan şehir, Osmanlı Devleti'nin ilk başkenti olması nedeniyle Türk tarihinde önemli bir yere sahiptir. Günümüzde ise sanayi, turizm, eğitim ve ticaret alanlarındaki gelişmiş yapısıyla Türkiye'nin en önemli büyükşehirlerinden biri olarak kabul edilmektedir.</p>
+
+        <h2 id="universite-sehri">Bursa Bir Üniversite Şehri mi?</h2>
+        <p>Bursa, sanayi ve ticaret alanındaki güçlü yapısıyla tanınsa da aynı zamanda gelişen yükseköğretim ekosistemiyle de dikkat çekmektedir. Şehirde faaliyet gösteren devlet ve vakıf üniversiteleri, hem Bursa'nın sosyal yapısına hem de ekonomik gelişimine büyük katkı sağlamaktadır.</p>
+
+        <p>Bursa'da yükseköğretim denildiğinde ilk akla gelen kurumlardan biri Bursa Uludağ Üniversitesi'dir. Şehrin ikinci devlet üniversitesi olan <strong>Bursa Teknik Üniversitesi (BTÜ)</strong> ise araştırma odaklı yaklaşımı ve teknik alanlardaki uzmanlaşmasıyla yeni nesil bir teknik üniversite olarak öne çıkmaktadır.</p>
+
+        
+
+        <h2 id="imkanlar">Bursa Öğrencilere Neler Sunuyor?</h2>
+        <p>Bursa'da şehir içi ulaşım; raylı sistem (BursaRay), belediye otobüsleri ve tramvay hatlarıyla desteklenmektedir. Öğrenciler için sunulan indirimli ulaşım kartları sayesinde toplu taşıma oldukça ekonomik ve erişilebilirdir.</p>
+
+        <h3>Barınma ve Sosyal Yaşam</h3>
+        <p>Barınma konusunda devlet yurtları, özel yurtlar ve yerleşim yerlerine yakın kiralık konut seçenekleri mevcuttur. Sosyal yaşam açısından ise Bursa; Uludağ'dan Gölyazı'ya, tarihi çarşılardan modern alışveriş merkezlerine kadar çok geniş bir yelpaze sunar.</p>
+
+        <h2 id="btu-bakis">BTÜ Açısından Bursa</h2>
+        <p>Bursa Teknik Üniversitesi öğrencileri için şehir, yaşayan bir laboratuvar gibidir. Organize Sanayi Bölgelerine yakınlığı sayesinde staj ve iş bulma olanakları, teknik eğitim gören öğrenciler için paha biçilemez bir avantajdır.</p>
+
+        <div class="article-img">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop" alt="Havalimanı ve Modern Bursa">
+            <div class="img-caption">Üniversite-Sanayi iş birliğinin merkezi: Bursa.</div>
+        </div>
+
+        <h2 id="sonuc">Sonuç ve Değerlendirme</h2>
+        <p>Bursa; tarihî mirası, gelişmiş ulaşım ağı, güçlü sanayi altyapısı ve yükseköğretim kurumlarıyla üniversite öğrencileri için önemli fırsatlar sunan şehirlerden biridir. Eğer kariyer hedefiniz üretim ve teknoloji odaklıysa, Bursa sizin için en doğru adreslerden biridir.</p>
+
+        <h3 id="btu-gecerken-yorum">BTÜ Geçerken Yorumu</h3>
+        <p>Bursa, Türkiye'nin en büyük öğrenci şehirlerinden biri olarak anılmasa da eğitim, üretim ve yaşam olanaklarını dengeli biçimde sunabilen şehirlerden biridir. Özellikle teknik alanlarda eğitim almayı planlayan öğrenciler için güçlü sanayi altyapısı önemli bir avantaj sağlayabilir. Bununla birlikte üniversite tercihi yapacak adayların yalnızca şehir hakkında değil, tercih etmeyi düşündükleri üniversite ve bölüm hakkında da ayrıntılı araştırma yapmaları faydalı olacaktır.</p>
+
+        <div class="sources-section" id="kaynakca">
+            <span class="toc-title">Kaynakça</span>
+            <div class="sources-grid">
+                <a href="https://www.tuik.gov.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> TÜİK</a>
+                <a href="https://www.bursa.bel.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> Bursa BB</a>
+                <a href="https://www.burulas.com.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> Burulaş</a>
+                <a href="https://www.btu.edu.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> BTÜ</a>
+                <a href="https://www.uludag.edu.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> Uludağ Üniv.</a>
+                <a href="https://mudanya.edu.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> Mudanya Üniv.</a>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script>
+    document.querySelectorAll('.toc-box a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerOffset = 100;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

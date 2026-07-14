@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bursa'da Öğrenci Olmak</title>
+    <link href="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" rel="icon" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Noto+Serif+TR:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --emerald:    #1a5c3a;
+            --emerald-d:  #0f3d26;
+            --gold:       #c9a84c;
+            --cream:      #faf6ef;
+            --ink:        #1a1a18;
+            --ink-soft:   #3d3d38;
+            --muted:      #7a7a72;
+            --white:      #ffffff;
+            --shadow:     0 10px 30px rgba(26,92,58,0.08);
+            --border:     rgba(201,168,76,0.2);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Serif TR', serif; background: var(--cream); color: var(--ink); line-height: 1.85; padding-top: 80px; }
+
+        /* ═══ HEADER ═══ */
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,246,239,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 78px; display: flex; align-items: center; justify-content: space-between; }
+        .logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-wrap img { height: 46px; }
+        .logo-text .univ { display: block; font-family: 'Syne', sans-serif; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+        .logo-text .comm { display: block; font-family: 'Amiri', serif; font-size: 16px; color: var(--emerald); font-weight: 800; }
+
+        nav { display: flex; gap: 8px; align-items: center; }
+        nav a { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; padding: 10px 14px; border-radius: 8px; transition: all .2s; }
+        nav a:hover { color: var(--emerald); background: rgba(26,92,58,0.05); }
+        nav a.active { color: var(--emerald); background: rgba(26,92,58,0.08); }
+        .btn-login { border: 1.5px solid var(--emerald); color: var(--emerald) !important; border-radius: 50px !important; }
+        .btn-login:hover { background: var(--emerald); color: white !important; }
+
+        /* ═══ BLOG CONTENT ═══ */
+        .blog-container { max-width: 860px; margin: 40px auto 80px; background: var(--white); padding: 50px 60px; border-radius: 20px; box-shadow: var(--shadow); position: relative; }
+
+        .hero-section { border-bottom: 1px solid #eee; padding-bottom: 30px; margin-bottom: 40px; }
+        .badge { display: inline-block; background: rgba(26,92,58,0.08); color: var(--emerald); padding: 6px 14px; border-radius: 50px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+        h1 { font-family: 'Amiri', serif; font-size: 42px; line-height: 1.25; margin-bottom: 20px; color: var(--ink); }
+        .meta-info { font-family: 'Syne', sans-serif; font-size: 13px; color: var(--muted); display: flex; gap: 20px; margin-bottom: 20px; }
+        .meta-info i { color: var(--gold); margin-right: 5px; }
+
+        /* TOC */
+        .toc-box { background: #f9f8f4; border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin: 40px 0; }
+        .toc-title { font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 14px; letter-spacing: 0.1em; color: var(--emerald); margin-bottom: 15px; border-bottom: 2px solid var(--emerald); display: inline-block; }
+        .toc-box ul { list-style: none; }
+        .toc-box li { margin-bottom: 10px; }
+        .toc-box a { text-decoration: none; color: var(--ink-soft); font-weight: 500; font-size: 15px; transition: color 0.2s; display: flex; align-items: center; gap: 10px; }
+        .toc-box a:hover { color: var(--emerald); }
+        .toc-box i { font-size: 10px; color: var(--gold); }
+
+        /* ARTICLE BODY */
+        .content p { font-size: 17px; margin-bottom: 25px; text-align: justify; }
+        h2 { font-family: 'Amiri', serif; font-size: 28px; margin: 50px 0 25px; color: var(--emerald-d); position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--gold); border-radius: 2px; }
+        h3 { font-family: 'Amiri', serif; font-size: 24px; margin: 35px 0 15px; color: var(--ink); border-left: 4px solid var(--emerald); padding-left: 15px; }
+
+        /* IMAGES */
+        .article-img { width: 100%; border-radius: 15px; margin: 40px 0; box-shadow: 0 15px 45px rgba(0,0,0,0.1); overflow: hidden; background: #eee; min-height: 200px; }
+        .article-img img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+        .article-img:hover img { transform: scale(1.02); }
+        .img-caption { text-align: center; font-size: 13px; color: var(--muted); margin-top: 10px; font-style: italic; font-family: 'Syne', sans-serif; }
+
+        /* FOOTER / SOURCES */
+        .sources-section { margin-top: 60px; padding-top: 30px; border-top: 2px dashed #eee; }
+        .sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 20px; }
+        .source-tag { background: white; border: 1px solid #eee; padding: 10px 15px; border-radius: 8px; text-decoration: none; color: var(--emerald); font-size: 13px; font-family: 'Syne', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+        .source-tag:hover { background: var(--emerald); color: white; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .blog-container { padding: 30px 20px; border-radius: 0; margin-top: 0; }
+            h1 { font-size: 32px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" alt="BTÜ Geçerken">
+      <div class="logo-text">
+        <span class="univ">Bursa Teknik Üniversitesi</span>
+        <span class="comm">Geçerken Topluluğu</span>
+      </div>
+    </a>
+
+    <nav id="main-nav">
+      <a href="index.html" class="active">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+	  <a href="btugecerkenblog.html">BTU Geçerken BLOG</a>
+      <a href="https://btugecerkenai.btugecerken.com">BTU GEÇERKEN AI</a>
+      <a href="ekibimiz.html">Ekibimiz</a>
+      <a href="https://account.btugecerken.com" target="_blank" class="btn-login">BTU GEÇERKEN ACCOUNT</a>
+    </nav>
+
+    <button id="mobile-menu-btn" aria-label="Menüyü aç/kapat">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<article class="blog-container">
+    <div class="hero-section">
+        <span class="badge">Şehir Rehberi</span>
+        <h1>Bursa'da Üniversite Okumak: Öğrenci Dostu Bir Şehir mi?</h1>
+        <div class="meta-info">
+            <span><i class="far fa-user"></i> Geçerken Editör Ekibi</span>
+            <span><i class="far fa-calendar"></i> 06 Temmuz 2026</span>
+            <span><i class="far fa-clock"></i> 8 dk okuma</span>
+        </div>
+        <p style="font-style: italic; border-left: 3px solid var(--gold); padding-left: 20px; color: var(--ink-soft);">Bursa’yı üniversite öğrencisi açısından ulaşım, yaşam, eğitim ve kariyer olanaklarıyla detaylı bir şekilde değerlendiriyoruz.</p>
+    </div>
+
+    <!-- İÇİNDEKİLER -->
+    <div class="toc-box">
+        <span class="toc-title">İçindekiler</span>
+        <ul>
+            <li><a href="#bursada-hayat"><i class="fas fa-chevron-right"></i>Bursa'da Öğrenci Hayatı</a></li>
+            <li><a href="#barınma"><i class="fas fa-chevron-right"></i>Bursa'da Barınma Seçenekleri</a></li>
+            <li><a href="#ulasim"><i class="fas fa-chevron-right"></i>Bursa'da Ulaşım</a></li>
+            <li><a href="#ogrenci-deneyimi"><i class="fas fa-chevron-right"></i>Bursa'da Sosyal Yaşam ve Öğrenci Deneyimi</a></li>
+            <li><a href="#maliyet"><i class="fas fa-chevron-right"></i>Bursa'da Yaşam Maliyetleri</a></li>
+            <li><a href="#btu-ogrenci"><i class="fas fa-chevron-right"></i> BTÜ Öğrencisi Açısından Bursa'da Öğrenci Olmak</a></li>
+			<li><a href="#btu-gecerken-yorum"><i class="fas fa-chevron-right"></i>BTÜ Geçerken Yorumu</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2 id="bursada-hayat">Bursa'da Öğrenci Hayatı</h2>
+        <p>Üniversite tercihi yapılırken şehir seçimi, eğitim alınacak bölüm kadar önemli bir faktör olarak değerlendirilmektedir. Bir öğrencinin akademik başarısı kadar sosyal yaşamı, ulaşım imkânları, barınma koşulları ve günlük yaşam deneyimi de üniversite sürecini doğrudan etkilemektedir. Bu nedenle bir şehrin "öğrenci dostu" olarak değerlendirilmesi yalnızca üniversitelerinin akademik başarısıyla değil, öğrencilerin günlük yaşamına sunduğu olanaklarla birlikte ele alınmalıdır.</p>
+
+       <p>Bursa, farklı üniversitelere ev sahipliği yapan ve her yıl binlerce öğrenciyi ağırlayan şehirlerden biridir. Eğitim hayatını sürdüren öğrenciler için ulaşım, konaklama, sosyal yaşam ve kariyer olanakları bakımından çeşitli imkânlar sunmaktadır. Aynı zamanda sanayi, tarih ve doğal yaşamın bir arada bulunması, öğrencilerin yalnızca akademik değil, kişisel gelişimlerine de katkı sağlayabilecek farklı deneyimler edinmelerine olanak tanımaktadır</p>.
+
+       <p>Şehir yaşamı açısından Bursa, büyükşehir olmasının sağladığı avantajları daha sakin bir yaşam temposuyla birleştiren bir yapıya sahiptir. Alışveriş merkezleri, kütüphaneler, kültür merkezleri, parklar ve sosyal etkinlik alanları öğrencilerin ders dışındaki zamanlarını değerlendirebilecekleri seçenekler sunarken; gelişmiş toplu taşıma ağı sayesinde şehir içinde farklı noktalara ulaşım da kolaylaşmaktadır.</p>
+
+       <p>Her öğrencinin beklentisi ve yaşam tarzı farklı olduğundan Bursa'daki üniversite deneyimi kişiden kişiye değişebilmektedir. Kimileri için sanayiyle iç içe bir şehirde eğitim görmek önemli bir avantaj oluştururken, kimileri sosyal ve kültürel etkinlikleri ön planda tutabilmektedir. Bu nedenle Bursa'da öğrenci olmayı değerlendirirken şehrin sunduğu olanakların kişisel beklentilerle birlikte değerlendirilmesi önem taşımaktadır.</p>
+		
+
+		<h2 id="barınma">Bursa'da Barınma Seçenekleri</h2>
+       <p>Üniversite eğitimi sürecinde barınma, öğrencilerin yaşam kalitesini doğrudan etkileyen en önemli unsurlardan biridir. Kampüse ulaşım, bütçe, güvenlik ve sosyal yaşam gibi faktörler, tercih edilecek konaklama seçeneğini belirlerken dikkate alınmaktadır. Bursa, farklı ihtiyaç ve bütçelere hitap eden çeşitli barınma alternatifleri sunan şehirlerden biridir.</p>
+
+        <p>Devlet yurtları, özellikle şehir dışından gelen öğrenciler tarafından en çok tercih edilen seçenekler arasında yer almaktadır. Kredi ve Yurtlar Genel Müdürlüğü (KYK) tarafından işletilen yurtlar, belirli başvuru kriterleri doğrultusunda öğrencilere konaklama imkânı sağlamaktadır. Yurtların kapasitesi, konumu ve sunduğu hizmetler dönemsel olarak değişebildiğinden, tercih döneminde güncel bilgilerin resmî kaynaklardan takip edilmesi önemlidir.</p>
+		
+		<p>Bursa'da özel yurtlar da öğrenciler için yaygın bir alternatif oluşturmaktadır. Şehrin farklı ilçelerinde faaliyet gösteren özel yurtlar; oda tipi, yemek hizmeti, ulaşım kolaylığı ve sosyal imkânlar bakımından farklı seçenekler sunabilmektedir. Bu nedenle seçim yapılırken yalnızca ücret değil, sunulan hizmetlerin kapsamı da değerlendirilmelidir.</p>
+		
+		<p>Birçok öğrenci ise eğitim sürecinde kiralık ev veya ev paylaşımı yöntemini tercih etmektedir. Özellikle kampüslere ulaşımın kolay olduğu bölgelerde öğrenciler tarafından paylaşımlı evler yaygın olarak kullanılmaktadır. Ev kiralamayı düşünen öğrencilerin kira bedelinin yanı sıra aidat, internet, elektrik, su ve doğal gaz gibi ek giderleri de bütçe planlamasına dâhil etmeleri önerilmektedir.</p>
+		
+		<p>Barınma tercihinde yalnızca konaklama maliyeti değil; kampüse ulaşım süresi, toplu taşıma olanakları, çevrede bulunan market, sağlık hizmetleri ve günlük ihtiyaçlara erişim gibi unsurlar da göz önünde bulundurulmalıdır. Özellikle ilk kez farklı bir şehirde yaşayacak öğrenciler için bu kriterler, üniversite yaşamına uyum sürecini doğrudan etkileyebilmektedir.</p>
+		
+		<p>Genel olarak değerlendirildiğinde Bursa, devlet yurtlarından özel yurtlara ve kiralık konutlara kadar farklı barınma seçenekleri sunmaktadır. Ancak ekonomik koşullar ve konut piyasası zaman içerisinde değişebildiğinden, tercih yapılmadan önce güncel fiyatların ve resmî duyuruların incelenmesi önem taşımaktadır.</p>
+
+        <h2 id="ulasim">Bursa'da Ulaşım</h2>
+        <p>Üniversite yaşamında ulaşım, öğrencilerin günlük rutinini doğrudan etkileyen temel unsurlardan biridir. Kampüse erişim süresi, toplu taşıma ağının gelişmişliği ve şehir içindeki hareket kolaylığı; hem eğitim hayatını hem de sosyal yaşamı şekillendiren önemli faktörler arasında yer almaktadır. Bursa, gelişmiş toplu taşıma sistemi sayesinde öğrencilerin şehir içinde farklı noktalara ulaşabilmesine olanak tanıyan büyükşehirlerden biridir.</p>
+
+        <p>Şehir içi ulaşım ağı; BursaRay, belediye otobüsleri, tramvay hatları ve minibüslerden oluşmaktadır. BursaRay, özellikle şehir merkezindeki önemli bölgeleri birbirine bağlayan raylı sistem olarak günlük ulaşımda önemli bir rol üstlenmektedir. Raylı sistemin desteklediği otobüs hatları sayesinde üniversite kampüsleri, yurt bölgeleri ve şehir merkezine ulaşım farklı alternatiflerle gerçekleştirilebilmektedir.</p>
+
+        <p>Toplu taşıma hizmetleri, Bursa Büyükşehir Belediyesi ve BURULAŞ tarafından işletilmektedir. Öğrenciler, gerekli başvuru işlemlerini tamamladıktan sonra indirimli öğrenci ulaşım kartlarından yararlanabilmektedir. Güncel ücret tarifeleri, kart başvuruları ve hat bilgileri resmî kurumlar tarafından düzenli olarak güncellenmektedir. Bu nedenle ulaşımla ilgili en güncel bilgilerin BURULAŞ'ın resmî internet sitesi ve mobil uygulamaları üzerinden takip edilmesi önerilmektedir.</p>
+
+        <p>Bursa'nın bir diğer avantajı ise şehirler arası ulaşım olanaklarıdır. İstanbul başta olmak üzere çevre illere kara yolu ve deniz yolu ile ulaşım sağlanabilmektedir. Özellikle hafta sonu veya tatil dönemlerinde ailesini ziyaret etmek isteyen öğrenciler için bu ulaşım seçenekleri önemli bir kolaylık sunmaktadır.</p>
+
+        <p>Ulaşım planlaması yapılırken yalnızca kampüse olan mesafe değil; yaşanılan bölgenin toplu taşıma bağlantıları, aktarma gereksinimi ve günlük yolculuk süresi de dikkate alınmalıdır. Özellikle ilk kez Bursa'ya gelecek öğrencilerin barınma tercihlerini yaparken ulaşım ağını birlikte değerlendirmeleri, günlük yaşamlarını daha planlı hâle getirebilir.</p>
+
+        <p>Genel olarak değerlendirildiğinde Bursa, raylı sistem ve otobüs ağıyla desteklenen toplu taşıma altyapısı sayesinde öğrencilerin eğitim ve sosyal yaşamlarını sürdürebilecekleri erişilebilir bir ulaşım ağı sunmaktadır. Ancak şehirdeki hatlar, sefer saatleri ve ücretlendirmeler zaman içerisinde güncellenebildiğinden, güncel bilgilerin resmî kaynaklardan takip edilmesi önem taşımaktadır.</p>        
+
+        <h2 id="ogrenci-deneyimi">Bursa'da Sosyal Yaşam ve Öğrenci Deneyimi</h2>
+        <p>Üniversite yaşamı yalnızca derslerden ve akademik başarıdan ibaret değildir. Öğrencilerin sosyal çevre edinmeleri, kültürel etkinliklere katılmaları, spor yapmaları ve boş zamanlarını verimli değerlendirebilmeleri de üniversite deneyiminin önemli parçalarından biridir. Bu açıdan değerlendirildiğinde Bursa, farklı ilgi alanlarına hitap eden sosyal ve kültürel olanaklar sunan şehirlerden biridir.</p>
+
+        <p>Şehir genelinde yer alan kafeler, restoranlar, alışveriş merkezleri, sinemalar ve kültür merkezleri öğrencilerin günlük yaşamında sıkça tercih edilen sosyal alanlar arasında yer almaktadır. Bunun yanı sıra belediyeler, üniversiteler ve çeşitli kurumlar tarafından yıl boyunca düzenlenen konserler, söyleşiler, sergiler ve festivaller öğrencilerin sosyal yaşama katılımını desteklemektedir.</p>
+
+        <p>Doğal ve tarihî alanlar da Bursa'nın öğrencilere sunduğu önemli avantajlardan biridir. Uludağ, Cumalıkızık, Gölyazı, Bursa Kent Müzesi ve şehir merkezindeki tarihî yapılar hem hafta sonu gezileri hem de kültürel keşifler için değerlendirilebilecek noktalar arasında bulunmaktadır. Özellikle doğayla iç içe vakit geçirmek isteyen öğrenciler için şehir, farklı alternatifler sunmaktadır.</p>
+
+        <p>Üniversite toplulukları da öğrencilerin sosyal yaşamında önemli bir yere sahiptir. Akademik, kültürel, sportif ve gönüllülük temelli öğrenci toplulukları sayesinde öğrenciler ortak ilgi alanlarına sahip kişilerle bir araya gelebilmekte, çeşitli etkinlikler düzenleyebilmekte ve üniversite yaşamını daha aktif şekilde deneyimleyebilmektedir. Bu topluluklar aynı zamanda ekip çalışması, organizasyon ve iletişim becerilerinin gelişmesine de katkı sağlamaktadır.</p>
+
+        <p>Bursa'nın büyükşehir yapısı sayesinde öğrenciler, ders dışındaki zamanlarında hem şehir merkezindeki sosyal imkânlardan hem de çevre ilçelerde bulunan doğal ve kültürel alanlardan yararlanabilmektedir. Bununla birlikte sosyal yaşam deneyimi, öğrencinin ilgi alanlarına, bütçesine ve üniversite yaşamına katılım düzeyine göre farklılık gösterebilmektedir.</p>
+
+        <p>Genel olarak değerlendirildiğinde Bursa; sosyal etkinlikler, kültürel faaliyetler, doğal yaşam alanları ve öğrenci toplulukları açısından üniversite öğrencilerine çeşitli seçenekler sunmaktadır. Üniversite yaşamını yalnızca akademik başarıyla sınırlı görmeyen öğrenciler için bu olanaklar, eğitim sürecini daha zengin ve dengeli bir deneyime dönüştürebilmektedir.</p>
+
+        <h2 id="maliyet">Bursa'da Yaşam Maliyetleri</h2>
+        <p>Üniversite tercih sürecinde eğitim kalitesi kadar yaşam maliyetleri de öğrencilerin kararlarını etkileyen önemli unsurlar arasında yer almaktadır. Konaklama, ulaşım, beslenme ve günlük ihtiyaçlar için yapılacak harcamalar; öğrencinin bütçe planlamasını doğrudan etkileyebilmektedir. Bu nedenle bir şehir değerlendirilirken yalnızca eğitim olanakları değil, yaşam giderleri de birlikte ele alınmalıdır.</p>
+
+        <p>Bursa, Türkiye'nin büyükşehirlerinden biri olmasına rağmen farklı bütçelere hitap edebilen yaşam seçenekleri sunmaktadır. Öğrencilerin aylık harcamaları; tercih edilen konaklama türü, ulaşım alışkanlıkları, sosyal yaşam tercihleri ve kişisel harcama planına göre değişiklik gösterebilmektedir. Bu nedenle tek bir yaşam maliyetinden söz etmek yerine, gider kalemlerinin ayrı ayrı değerlendirilmesi daha sağlıklı olacaktır.
+
+        <p>Barınma, öğrenci bütçesinin en büyük bölümünü oluşturan giderlerden biridir. Devlet yurtları, özel yurtlar veya kiralık konut tercihine göre aylık harcamalar önemli ölçüde farklılık gösterebilmektedir. Bunun yanı sıra elektrik, su, doğal gaz, internet ve aidat gibi ek giderler de bütçe planlamasında dikkate alınmalıdır.</p>
+
+        <p>Beslenme giderleri de öğrencilerin günlük yaşamında önemli bir yer tutmaktadır. Üniversite yemekhaneleri, şehirdeki restoranlar, kafeler ve market alışverişleri farklı bütçelere uygun seçenekler sunabilmektedir. Öğrencilerin yaşam tarzı ve tercihleri doğrultusunda bu gider kalemi değişiklik gösterebilmektedir.</p>
+
+        <p>Ulaşım harcamaları ise öğrencilerin yaşadığı bölge ile üniversite arasındaki mesafeye bağlı olarak farklılaşmaktadır. Öğrenci ulaşım kartlarının sağladığı indirimler, toplu taşıma kullanımını ekonomik açıdan destekleyen önemli uygulamalar arasında yer almaktadır.</p>
+
+        <p>Bursa'da sosyal yaşam için ayrılan bütçe de kişisel tercihlere göre değişebilmektedir. Kültürel etkinlikler, spor faaliyetleri, kafeler, sinema ve benzeri aktiviteler öğrencilerin aylık harcamalarını etkileyen unsurlar arasında yer almaktadır. Bununla birlikte şehirde ücretsiz veya düşük maliyetli sosyal etkinliklerin bulunması, bütçesini planlı kullanan öğrenciler için alternatifler sunabilmektedir.</p>
+
+        <p>Genel olarak değerlendirildiğinde Bursa, yaşam maliyetleri açısından öğrencilerin farklı bütçe planlarına uyum sağlayabilecek seçenekler sunmaktadır. Ancak ekonomik koşullar ve fiyatlar zaman içerisinde değişebildiğinden, üniversite tercih sürecinde güncel maliyetlerin resmî kurumlar ve güvenilir kaynaklar üzerinden takip edilmesi önem taşımaktadır.</p>
+
+        <h2 id="#btu-ogrenci">BTÜ Öğrencisi Açısından Bursa'da Öğrenci Olmak</h2>
+        <p>Bir şehirde öğrenci olma deneyimi, üniversitenin akademik yapısı kadar bulunduğu çevreyle de şekillenmektedir. Bu açıdan değerlendirildiğinde Bursa, Bursa Teknik Üniversitesi (BTÜ) öğrencileri için hem akademik hem de sosyal yaşam bakımından çeşitli fırsatlar sunan bir şehir profili çizmektedir.</p>
+
+        <p>BTÜ'nün araştırma ve uygulamalı eğitimi merkeze alan yapısı, Bursa'nın güçlü sanayi altyapısıyla desteklenmektedir. Organize sanayi bölgeleri, teknoloji geliştirme merkezleri ve üretim tesislerinin şehirde yoğun olarak bulunması; özellikle mühendislik, doğa bilimleri ve teknik alanlarda eğitim gören öğrenciler için staj, uygulamalı eğitim ve sektörle tanışma açısından önemli avantajlar sağlayabilmektedir.</p>
+
+        <p>Üniversite yaşamının yalnızca derslerden ibaret olmadığı düşünüldüğünde, BTÜ öğrencileri de Bursa'nın sunduğu sosyal ve kültürel olanaklardan yararlanabilmektedir. Öğrenci toplulukları, gönüllülük faaliyetleri, kültürel etkinlikler ve şehir genelinde düzenlenen organizasyonlar; öğrencilerin sosyal çevrelerini geliştirmelerine ve üniversite deneyimlerini zenginleştirmelerine katkı sağlamaktadır.</p>
+
+        <p>Ulaşım açısından değerlendirildiğinde ise BTÜ öğrencileri, şehir içi toplu taşıma ağı sayesinde kampüsler ile şehir merkezi arasında farklı ulaşım alternatiflerinden faydalanabilmektedir. Barınma tercihleri yapılırken kampüse yakınlık kadar toplu taşıma bağlantılarının da dikkate alınması, günlük yaşamın daha planlı şekilde sürdürülmesine yardımcı olabilmektedir.</p>
+
+        <p>Bununla birlikte her öğrencinin beklentisi farklıdır. Kimileri araştırma ve teknik eğitim olanaklarını ön planda tutarken, kimileri sosyal yaşamı veya şehirdeki kariyer fırsatlarını daha önemli görebilmektedir. Bu nedenle BTÜ'yü tercih etmeyi düşünen adayların hem üniversitenin akademik yapısını hem de Bursa'nın sunduğu yaşam koşullarını birlikte değerlendirmeleri faydalı olacaktır.</p>
+
+        <p>Genel olarak değerlendirildiğinde Bursa, BTÜ öğrencilerine eğitim, ulaşım, sosyal yaşam ve kariyer planlaması açısından dengeli bir üniversite deneyimi sunabilecek şehirlerden biridir. Ancak doğru üniversite tercihi, her öğrencinin kendi hedefleri, ilgi alanları ve beklentileri doğrultusunda yapılmalıdır.</p>
+
+        <h3 id="btu-gecerken-yorum">BTÜ Geçerken Yorumu</h3>
+        <p>Bizce Bursa'nın en güçlü yanı, şehir yaşamı ile öğrenci yaşamını dengeli şekilde bir araya getirebilmesi. Ulaşım ücretleri ve bazı yaşam giderleri zaman zaman bütçeyi zorlayabiliyor. Nilüfer tarafı ise sosyal yaşam açısından öğrencilerin en çok tercih ettiği bölgelerden biri. Öte yandan BTÜ'nün mevcut kampüs yapısı, büyük ve bütünleşik bir kampüs deneyimi arayan öğrencilerin beklentisini tam olarak karşılamayabilir.</p>
+
+        <div class="sources-section" id="kaynakca">
+            <span class="toc-title">Kaynakça</span>
+            <div class="sources-grid">
+                <a href="https://www.tuik.gov.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> TÜİK</a>
+                <a href="https://www.bursa.bel.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> Bursa BB</a>
+                <a href="https://www.burulas.com.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> Burulaş</a>
+                <a href="https://www.btu.edu.tr" class="source-tag" target="_blank"><i class="fas fa-link"></i> BTÜ</a>
+				<a href="https://www.gsb.gov.tr/tr/sayfa/5036-merkez-teskilati" class="source-tag" target="_blank"><i class="fas fa-link"></i>Gençlik ve Spor Bakanlığı Kredi ve Yurtlar Genel Müdürlüğü</a>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script>
+    document.querySelectorAll('.toc-box a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerOffset = 100;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

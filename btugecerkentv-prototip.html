@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTU Geçerken TV</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
+}
+
+body{
+    background:#0b0b0b;
+    color:#fff;
+}
+
+/* Navbar */
+
+nav{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 60px;
+
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(10px);
+
+    z-index:999;
+}
+
+.logo{
+
+    font-size:34px;
+    font-weight:bold;
+    color:#ffd400;
+}
+
+.menu{
+
+    display:flex;
+    gap:35px;
+}
+
+.menu a{
+
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+}
+
+.search{
+
+    width:300px;
+    height:45px;
+
+    border-radius:30px;
+    border:none;
+
+    background:#202020;
+
+    color:white;
+
+    padding-left:20px;
+}
+
+/* Hero */
+
+.hero{
+
+    height:760px;
+
+    background:url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1800&auto=format&fit=crop") center/cover;
+
+    position:relative;
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(to right,#000 35%,transparent 70%),
+    linear-gradient(to top,#000 5%,transparent 50%);
+}
+
+.hero-content{
+
+    position:absolute;
+
+    left:70px;
+
+    top:200px;
+
+    width:520px;
+}
+
+.hero h1{
+
+    font-size:70px;
+    margin-bottom:20px;
+}
+
+.info{
+
+    display:flex;
+    gap:12px;
+
+    color:#cfcfcf;
+
+    margin-bottom:20px;
+}
+
+.hero p{
+
+    color:#d8d8d8;
+
+    line-height:1.7;
+
+    margin-bottom:30px;
+}
+
+.watch{
+
+    background:#ffd400;
+
+    color:black;
+
+    border:none;
+
+    padding:18px 40px;
+
+    border-radius:40px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+section{
+
+    padding:40px 60px;
+}
+
+section h2{
+
+    margin-bottom:20px;
+
+    font-size:32px;
+}
+
+.row{
+
+    display:flex;
+
+    gap:20px;
+
+    overflow-x:auto;
+
+    padding-bottom:15px;
+}
+
+.row::-webkit-scrollbar{
+
+    height:8px;
+}
+
+.row::-webkit-scrollbar-thumb{
+
+    background:#555;
+}
+
+/* Card */
+
+.card{
+
+    min-width:220px;
+
+    height:330px;
+
+    background:#222;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+.card:hover{
+
+    transform:scale(1.08);
+}
+
+.poster{
+
+    height:240px;
+
+    background:linear-gradient(135deg,#444,#222);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    color:#999;
+}
+
+.details{
+
+    padding:15px;
+}
+
+.details h3{
+
+    margin-bottom:10px;
+}
+
+.details p{
+
+    color:#aaa;
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+footer{
+
+    padding:50px;
+
+    text-align:center;
+
+    color:#777;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">BTU Geçerken TV</div>
+
+<div class="menu">
+
+<a href="#">Account Originals&nbsp;</a>
+<a href="#">Etkinlikler</a>
+<a href="#">Canlı TV</a>
+<a href="#">Podcastler</a>
+<a href="#">Belgeseller</a>
+
+</div>
+
+<input class="search" placeholder="Ara...">
+
+</nav>
+
+<div class="hero">
+
+<div class="hero-content">
+
+<h1>Label</h1>
+
+<div class="info">
+
+<span>Label</span>
+
+<span>|</span>
+
+<span>Label</span>
+
+<span>|</span>
+
+<span>Label</span>
+
+</div>
+
+<p>
+
+Label
+
+</p>
+
+<button class="watch">
+
+<i class="fa-solid fa-play"></i>
+
+Hemen İzle
+
+</button>
+
+</div>
+
+</div>
+
+<section>
+
+<h2>Label</h2>
+
+<div class="row">
+
+<script>
+
+for(let i=0;i<10;i++){
+
+document.write(`
+
+<div class="card">
+
+<div class="poster">
+
+Label
+
+</div>
+
+<div class="details">
+
+<h3>Label</h3>
+
+<p>Label</p>
+
+</div>
+
+</div>
+
+`);
+
+}
+
+</script>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Label</h2>
+
+<div class="row">
+
+<script>
+
+for(let i=0;i<10;i++){
+
+document.write(`
+
+<div class="card">
+
+<div class="poster">
+
+Label
+
+</div>
+
+<div class="details">
+
+<h3>Label</h3>
+
+<p>Label</p>
+
+</div>
+
+</div>
+
+`);
+
+}
+
+</script>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Label</h2>
+
+<div class="row">
+
+<script>
+
+for(let i=0;i<10;i++){
+
+document.write(`
+
+<div class="card">
+
+<div class="poster">
+
+Label
+
+</div>
+
+<div class="details">
+
+<h3>Label</h3>
+
+<p>Label</p>
+
+</div>
+
+</div>
+
+`);
+
+}
+
+</script>
+
+</div>
+
+</section>
+
+<footer>
+
+BTU Geçerken TV
+
+</footer>
+
+</body>
+</html>

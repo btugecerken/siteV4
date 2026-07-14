@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Geçerken Topluluğu | Blog</title>
+    <link href="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" rel="icon" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Syne:wght@400;600;700;800&amp;family=Noto+Serif+TR:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --emerald:    #1a5c3a;
+            --emerald-d:  #0f3d26;
+            --gold:       #c9a84c;
+            --cream:      #faf6ef;
+            --ink:        #1a1a18;
+            --ink-soft:   #3d3d38;
+            --muted:      #7a7a72;
+            --white:      #ffff;
+            --shadow:     0 8px 40px rgba(26,92,58,0.13);
+            --danger:     #c0392b;
+            --success:    #27ae60;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif TR', serif; background: var(--cream); color: var(--ink); padding-top: 78px; }
+
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,246,239,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(201,168,76,0.25); }
+        .header-inner { max-width: 1220px; margin: 0 auto; padding: 0 20px; height: 78px; display: flex; align-items: center; justify-content: space-between; }
+        .logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-wrap img { height: 46px; }
+        .logo-text .univ { display: block; font-family: 'Syne', sans-serif; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+        .logo-text .comm { display: block; font-family: 'Amiri', serif; font-size: 16px; color: var(--emerald); font-weight: 800; }
+
+        #main-nav { display: flex; gap: 6px; }
+        #main-nav a { font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 600; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; padding: 9px 13px; transition: all .15s; }
+        #main-nav a.active { color: var(--emerald); background: rgba(26,92,58,0.08); border-radius: 7px; }
+
+        .hero { padding: 80px 20px 40px; text-align: center; }
+        .hero-title { font-family: 'Amiri', serif; font-size: 50px; margin-bottom: 15px; }
+        .hero-title em { color: var(--emerald); font-style: italic; }
+
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+        .search-card { background: white; border-radius: 20px; padding: 25px; border: 1px solid rgba(201,168,76,0.2); box-shadow: var(--shadow); margin-bottom: 30px; }
+        .search-input { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1.5px solid #eee; font-size: 16px; outline: none; transition: border-color .2s; }
+        .search-input:focus { border-color: var(--emerald); }
+
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 80px; }
+        .post-card { background: white; border-radius: 16px; border: 1px solid #eee; overflow: hidden; display: flex; flex-direction: column; transition: all .2s; text-decoration: none; color: inherit; }
+        .post-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+        .post-cover { height: 180px; width: 100%; background-size: cover; background-position: center; }
+        .post-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+        .post-cat { align-self: flex-start; font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--emerald); background: rgba(26,92,58,0.08); padding: 4px 10px; border-radius: 20px; }
+        .post-body h3 { font-family: 'Amiri', serif; font-size: 20px; line-height: 1.3; }
+        .post-excerpt { font-size: 14px; color: var(--ink-soft); line-height: 1.5; flex: 1; }
+        .post-meta { font-size: 12px; color: var(--muted); border-top: 1px dashed #eee; padding-top: 10px; }
+
+        @media (max-width: 768px) { .hero-title { font-size: 36px; } }
+
+        /* --- Blog Generator --- */
+        .generator-card { background: white; border-radius: 20px; padding: 28px; border: 1px solid rgba(201,168,76,0.2); box-shadow: var(--shadow); margin-bottom: 30px; }
+        .generator-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; cursor: pointer; user-select: none; }
+        .generator-head i.fa-wand-magic-sparkles { color: var(--gold); font-size: 18px; }
+        .generator-head h2 { font-family: 'Amiri', serif; font-size: 22px; color: var(--emerald-d); }
+        .generator-head .toggle-icon { margin-left: auto; color: var(--muted); transition: transform .2s; font-size: 14px; }
+        .generator-card.collapsed .toggle-icon { transform: rotate(-90deg); }
+        .generator-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+        .generator-body { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; }
+        .generator-card.collapsed .generator-body { display: none; }
+        .generator-card.collapsed .generator-sub { display: none; }
+
+        .gen-field { margin-bottom: 14px; }
+        .gen-field label { display: block; font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); margin-bottom: 6px; }
+        .gen-field input, .gen-field textarea, .gen-field select { width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #eee; font-size: 14px; font-family: 'Noto Serif TR', serif; outline: none; transition: border-color .2s; background: var(--cream); }
+        .gen-field input:focus, .gen-field textarea:focus, .gen-field select:focus { border-color: var(--emerald); }
+        .gen-field textarea { resize: vertical; min-height: 60px; }
+        .gen-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        /* Dosya ve URL girdisi yan yana dursun */
+        .image-input-group { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 10px; }
+
+        .gen-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+        .gen-btn { font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; border: none; border-radius: 50px; padding: 12px 20px; cursor: pointer; transition: all .15s; display: inline-flex; align-items: center; gap: 8px; }
+        .gen-btn-primary { background: var(--emerald); color: white; }
+        .gen-btn-primary:hover { background: var(--emerald-d); }
+        .gen-btn-secondary { background: rgba(201,168,76,0.15); color: var(--emerald-d); }
+        .gen-btn-secondary:hover { background: rgba(201,168,76,0.28); }
+        .gen-btn-ghost { background: transparent; color: var(--muted); border: 1.5px solid #eee; }
+        .gen-btn-ghost:hover { border-color: var(--emerald); color: var(--emerald); }
+        .gen-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+        .gen-note.gen-success { color: var(--emerald); font-weight: 600; }
+
+        /* --- Validator Stilleri --- */
+        .validator-box { margin-top: 15px; padding: 14px; background: #fdfcf9; border: 1px solid #eee; border-radius: 10px; }
+        .validator-title { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: var(--ink-soft); }
+        .validator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 15px; }
+        .validator-item { font-size: 12px; display: flex; align-items: center; gap: 6px; font-family: 'Noto Serif TR', serif; }
+        .validator-item.success { color: var(--success); }
+        .validator-item.danger { color: var(--danger); }
+
+        .gen-preview-label { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); margin-bottom: 10px; }
+        .gen-preview-wrap { max-width: 320px; }
+        .gen-code-wrap { margin-top: 18px; }
+        .gen-code { width: 100%; min-height: 150px; font-family: 'Courier New', monospace; font-size: 11.5px; line-height: 1.5; padding: 14px; border-radius: 10px; border: 1.5px solid #eee; background: var(--ink); color: #d8f0e1; resize: vertical; }
+
+        @media (max-width: 760px) { .generator-body { grid-template-columns: 1fr; } .gen-row { grid-template-columns: 1fr; } .validator-grid { grid-template-columns: 1fr; } .image-input-group { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" alt="BTÜ Geçerken">
+      <div class="logo-text">
+        <span class="univ">Bursa Teknik Üniversitesi</span>
+        <span class="comm">Geçerken Topluluğu</span>
+      </div>
+    </a>
+    <nav id="main-nav">
+      <a href="index.html" class="active">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+      <a href="btugecerkenblog.html">BTU Geçerken BLOG Generator</a>
+      <a href="https://btugecerkenai.btugecerken.com">BTU GEÇERKEN AI</a>
+      <a href="ekibimiz.html">Ekibimiz</a>
+      <a href="https://account.btugecerken.com" target="_blank" class="btn-login">BTU GEÇERKEN ACCOUNT</a>
+    </nav>
+    <button id="mobile-menu-btn" aria-label="Menüyü aç/kapat">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">BTU Geçerken <em>Blog Generator</em></h1>
+            <p>BTÜ hayatı, rehberler ve özgün içerikler.</p>
+        </section>
+
+        <div class="container">
+            <div class="search-card">
+                <input class="search-input" id="searchInput" placeholder="Yazı ara..."/>
+            </div>
+
+            <!-- ============ BLOG GENERATOR ============ -->
+            <div class="generator-card" id="generatorCard">
+                <div class="generator-head" id="generatorToggle">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <h2>Yeni Blog Yazısı Oluştur</h2>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                </div>
+                <p class="generator-sub">Formu doldurup önizlemeyi kontrol edin, ardından oluşturulan kartı sayfaya eklemek için kodu kopyalayıp <code>blog-grid</code> içine yapıştırın.</p>
+
+                <div class="generator-body">
+                    <div class="gen-form">
+                        <div class="gen-field">
+                            <label for="genTitle">Başlık</label>
+                            <input id="genTitle" placeholder="Örn: Kariyer Günleri Ardından" type="text"/>
+                        </div>
+                        <div class="gen-field">
+                            <label for="genExcerpt">Özet</label>
+                            <textarea id="genExcerpt" placeholder="Yazının kısa özeti (1-2 cümle)"></textarea>
+                        </div>
+                        <div class="gen-row">
+                            <div class="gen-field">
+                                <label for="genCategory">Kategori (etiket)</label>
+                                <select id="genCategory">
+                                    <option value="Gündem">Gündem</option>
+                                    <option value="Teknoloji">Teknoloji</option>
+                                    <option value="BTÜ">BTÜ</option>
+                                    <option value="Bilim">Bilim</option>
+                                    <option value="Ekonomi">Ekonomi</option>
+                                    <option value="Düşünce">Düşünce</option>
+                                    <option value="Kültür & Sanat">Kültür &amp; Sanat</option>
+                                    <option value="Şehir Rehberi">Şehir Rehberi</option>
+                                    <option value="Tanıtım">Tanıtım</option>
+                                </select>
+                            </div>
+                            <div class="gen-field">
+                                <label for="genDate">Tarih</label>
+                                <input id="genDate" type="date"/>
+                            </div>
+                        </div>
+                        <div class="gen-field">
+                            <label for="genImage">Kapak Görseli</label>
+                            <div class="image-input-group">
+                                <input id="genImage" placeholder="URL girin (https://...)" type="text"/>
+                                <input id="genFile" type="file" accept="image/*" style="padding: 8px 10px; font-size: 12px;"/>
+                            </div>
+                        </div>
+                        <div class="gen-field">
+                            <label for="genLink">Yazının Dosya Adı / Bağlantısı</label>
+                            <input id="genLink" placeholder="Örn: yeni-yazi-basligi.html" type="text"/>
+                        </div>
+                        <div class="gen-field">
+                            <label for="genKeywords">Anahtar Kelimeler (virgülle ayırın)</label>
+                            <input id="genKeywords" placeholder="Örn: btü, yapay zeka, debug" type="text"/>
+                        </div>
+
+                        <div class="gen-actions">
+                            <button class="gen-btn gen-btn-primary" id="genPreviewBtn" type="button"><i class="fa-solid fa-eye"></i> Önizle</button>
+                            <button class="gen-btn gen-btn-secondary" id="genAddBtn" type="button"><i class="fa-solid fa-plus"></i> Grid'e Ekle</button>
+                            <button class="gen-btn gen-btn-ghost" id="genCopyBtn" type="button"><i class="fa-solid fa-code"></i> Kodu Kopyala</button>
+                        </div>
+                        <p class="gen-note" id="genNote">"Grid'e Ekle" yalnızca bu tarayıcı oturumunda önizleme amaçlıdır; sayfayı kalıcı olarak güncellemek için kopyaladığınız kodu bloğun HTML dosyasına yapıştırmanız gerekir.</p>
+
+                        <!-- ============ VALIDATOR PANEL ============ -->
+                        <div class="validator-box">
+                            <div class="validator-title"><i class="fa-solid fa-shield-halved"></i> Canlı Doğrulama Sistemi</div>
+                            <div class="validator-grid" id="validatorGrid">
+                                <div class="validator-item" id="vTitle"><i class="fa-solid fa-circle"></i> Başlık Durumu</div>
+                                <div class="validator-item" id="vLinkEmpty"><i class="fa-solid fa-circle"></i> Dosya Adı Girilmiş</div>
+                                <div class="validator-item" id="vLinkExt"><i class="fa-solid fa-circle"></i> .html Uzantısı</div>
+                                <div class="validator-item" id="vHrefDup"><i class="fa-solid fa-circle"></i> Benzersiz Bağlantı (Href)</div>
+                                <div class="validator-item" id="vTitleDup"><i class="fa-solid fa-circle"></i> Benzersiz Başlık</div>
+                                <div class="validator-item" id="vSearch"><i class="fa-solid fa-circle"></i> Data-Search Durumu</div>
+                                <div class="validator-item" id="vDate"><i class="fa-solid fa-circle"></i> Tarih Seçimi</div>
+                                <div class="validator-item" id="vImage"><i class="fa-solid fa-circle"></i> Kapak Görseli</div>
+                            </div>
+                        </div>
+
+                        <div class="gen-code-wrap">
+                            <label for="genCode" style="display:block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);margin-bottom:6px;">Oluşturulan Kod</label>
+                            <textarea class="gen-code" id="genCode" placeholder="Kod burada görünecek..." readonly></textarea>
+                        </div>
+                    </div>
+
+                    <div class="gen-preview">
+                        <div class="gen-preview-label">Canlı Önizleme</div>
+                        <div class="gen-preview-wrap" id="genPreviewWrap">
+                            <a class="post-card" href="#" id="genPreviewCard" onclick="return false;">
+                                <div class="post-cover" id="genPreviewCover" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&amp;w=600');"></div>
+                                <div class="post-body">
+                                    <span class="post-cat" id="genPreviewCat">Gündem</span>
+                                    <h3 id="genPreviewTitle">Başlık burada görünecek</h3>
+                                    <p class="post-excerpt" id="genPreviewExcerpt">Özet burada görünecek.</p>
+                                    <div class="post-meta" id="genPreviewMeta">Tarih seçilmedi</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============ /BLOG GENERATOR ============ -->
+
+            <!-- Blog Grid: Ters Kronolojik Sıralama -->
+<div class="blog-grid" id="blogGrid">
+    <!-- 1 - Yeni (08 Temmuz) -->
+    <a class="post-card" href="btu-gecerken-nedir-bir-topluluktan-daha-fazlasi.html" data-category="Tanıtım">
+        <div class="post-cover" style="background-image: url('../logogecerken-Photoroom.png');"></div>
+        <div class="post-body">
+            <span class="post-cat">Gündem</span>
+            <h3>BTU Geçerken Tanıtım</h3>
+            <p class="post-excerpt">Haber bültenimizin ikinci sayısındaki seçili içerikler.</p>
+            <div class="post-meta">08 Temmuz 2026</div>
+        </div>
+    </a>
+
+    <!-- 2 - Yeni (08 Temmuz) -->
+<a class="post-card" href="btu-gecerken-ai-ekosistemi-ve-araclari.html" data-category="teknoloji">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">Teknoloji</span>
+        <h3>AI Ekosistemi ve Araçları</h3>
+        <p class="post-excerpt">Öğrencilere yönelik yapay zeka araçları ve sistemlerimiz.</p>
+        <div class="post-meta">08 Temmuz 2026</div>
+    </div>
+</a>
+
+    <!-- 3 - Yeni (08 Temmuz) -->
+<a class="post-card" href="btu-gecerken-25-26-faaliyet-raporu.html" data-category="btü">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">BTÜ</span>
+        <h3>25/26 Faaliyet Raporu</h3>
+        <p class="post-excerpt">Topluluğumuzun bu dönemdeki tüm çalışmalarının özeti.</p>
+        <div class="post-meta">08 Temmuz 2026</div>
+    </div>
+</a>
+
+    <!-- 4 - Yeni (08 Temmuz) -->
+<a class="post-card" href="romanesk-mimari-ozellikleri-ve-tarihi.html" data-category="btü">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">BTÜ</span>
+        <h3>Yerleşke Rehberi</h3>
+        <p class="post-excerpt">BTÜ kampüslerine genel bakış ve temel erişim noktaları.</p>
+        <div class="post-meta">08 Temmuz 2026</div>
+    </div>
+</a>
+    <!-- 5 - (08 Temmuz) -->
+<a class="post-card" href="peygamberler-tarihi-hz-adem-kissasi-dersler.html" data-category="bilim">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1532187875605-1ef6ec2ca447?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">Bilim</span>
+        <h3>Peygamberler Tarihi: Hz. Adem</h3>
+        <p class="post-excerpt">Hz. Adem kıssasından modern çağ dersleri.</p>
+        <div class="post-meta">08 Temmuz 2026</div>
+    </div>
+</a>
+    <!-- 6 - (08 Temmuz) -->
+<a class="post-card" href="ekonomi-nedir-temel-kavramlar-ve-enflasyon.html" data-category="ekonomi">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1611974714658-bb12390f75a7?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">Ekonomi</span>
+        <h3>Ekonomi 101</h3>
+        <p class="post-excerpt">Hayatımızı şekillendiren temel ekonomik kavramlar.</p>
+        <div class="post-meta">08 Temmuz 2026</div>
+    </div>
+</a>
+
+
+    <!-- 7 - (08 Temmuz) -->
+<a class="post-card" href="genclik-ve-istikamet-modern-cagda-rota-belirlemek.html" data-category="düşünce">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">Düşünce</span>
+        <h3>Gençlik ve İstikamet</h3>
+        <p class="post-excerpt">Modern çağda rota belirlemek üzerine bir analiz.</p>
+        <div class="post-meta">08 Temmuz 2026</div>
+    </div>
+</a>
+	
+    <!-- 8 - (08 Temmuz) -->
+<a class="post-card" href="altın-oran-guzelligin-matematigi-phi.html" data-category="kültür">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">Kültür & Sanat</span>
+        <h3>Altın Oran: Guzzelligin Matematigi</h3>
+        <p class="post-excerpt">Doğanın ve sanatın gizli formülü Phi'yi keşfedin.</p>
+        <div class="post-meta">08 Temmuz 2026</div>
+    </div>
+</a>
+
+    <!-- 9 - (08 Temmuz) -->
+    <a class="post-card" href="gecerkengundem-sayi2.html" data-category="gündem">
+        <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=600');"></div>
+        <div class="post-body">
+            <span class="post-cat">Gündem</span>
+            <h3>Geçerken Gündem</h3>
+            <p class="post-excerpt">Bilimden spora dünya panoraması ve güncel haberler.</p>
+            <div class="post-meta">08 Temmuz 2026</div>
+        </div>
+    </a>
+
+    <!-- 10 - Rehberler (06 Temmuz) -->
+<a class="post-card" href="bys-btu.html" data-category="btü">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">BTÜ</span>
+        <h3>BYS BTÜ Rehberi</h3>
+        <p class="post-excerpt">Bütünleşik Yönetim Sistemi modülleri ve kullanımı.</p>
+        <div class="post-meta">06 Temmuz 2026</div>
+    </div>
+</a>
+
+    <!-- 11 -->
+<a class="post-card" href="btu-ekampus.html" data-category="btü">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">BTÜ</span>
+        <h3>E-Kampüs Rehberi</h3>
+        <p class="post-excerpt">Dijital eğitim sistemini etkin kullanma yöntemleri.</p>
+        <div class="post-meta">06 Temmuz 2026</div>
+    </div>
+</a>
+
+    <!-- 12 -->
+<a class="post-card" href="btu-obs.html" data-category="btü">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">BTÜ</span>
+        <h3>BTÜ OBS Rehberi</h3>
+        <p class="post-excerpt">Ders kaydı ve not işlemleri hakkında her şey.</p>
+        <div class="post-meta">06 Temmuz 2026</div>
+    </div>
+</a>
+
+    <!-- 13 -->
+    <a class="post-card" href="yerleske-rehberi.html" data-category="btü">
+        <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600');"></div>
+        <div class="post-body">
+            <span class="post-cat">BTÜ</span>
+            <h3>Yerleşke ve Kampüs Hayatı</h3>
+            <p class="post-excerpt">Mimar Sinan ve Yıldırım Bayezid yerleşkeleri rehberi.</p>
+            <div class="post-meta">06 Temmuz 2026</div>
+        </div>
+    </a>
+
+    <!-- 14 -->
+<a class="post-card" href="bursada-ogrenci-olmak.html" data-category="şehir">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1549643276-fdf2fab574f5?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">Şehir Rehberi</span>
+        <h3>Bursa'da Öğrenci Olmak</h3>
+        <p class="post-excerpt">Bursa'yı öğrenci gözünden her anlamda ele alıyoruz.</p>
+        <div class="post-meta">06 Temmuz 2026</div>
+    </div>
+</a>
+	
+   <!-- 15 -->
+<a class="post-card" href="bursa-ogrenci-dostu-bir-sehir-mi.html" data-category="şehir">
+    <div class="post-cover" style="background-image: url('https://images.unsplash.com/photo-1549643276-fdf2fab574f5?q=80&w=600');"></div>
+    <div class="post-body">
+        <span class="post-cat">Şehir Rehberi</span>
+        <h3>Bursa'da Üniversite Okumak: Öğrenci Dostu mu?</h3>
+        <p class="post-excerpt">Bursa’yı ulaşım, yaşam ve eğitim olanaklarıyla değerlendiriyoruz.</p>
+        <div class="post-meta">06 Temmuz 2026</div>
+    </div>
+</a>
+</div>
+        </div>
+    </main>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        searchInput.oninput = () => {
+            const q = searchInput.value.toLowerCase();
+            document.querySelectorAll('.post-card').forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(q) ? 'flex' : 'none';
+            });
+        };
+    </script>
+
+    <script>
+        /* ============ Blog Generator ============ */
+        (function () {
+            const els = {
+                toggle: document.getElementById('generatorToggle'),
+                card: document.getElementById('generatorCard'),
+                title: document.getElementById('genTitle'),
+                excerpt: document.getElementById('genExcerpt'),
+                category: document.getElementById('genCategory'),
+                date: document.getElementById('genDate'),
+                image: document.getElementById('genImage'),
+                file: document.getElementById('genFile'), // Yeni Dosya Elemanı
+                keywords: document.getElementById('genKeywords'),
+                previewBtn: document.getElementById('genPreviewBtn'),
+                addBtn: document.getElementById('genAddBtn'),
+                copyBtn: document.getElementById('genCopyBtn'),
+                code: document.getElementById('genCode'),
+                note: document.getElementById('genNote'),
+                pCover: document.getElementById('genPreviewCover'),
+                pCat: document.getElementById('genPreviewCat'),
+                pTitle: document.getElementById('genPreviewTitle'),
+                pExcerpt: document.getElementById('genPreviewExcerpt'),
+                pMeta: document.getElementById('genPreviewMeta'),
+                grid: document.getElementById('blogGrid')
+            };
+
+            const vEls = {
+                title: document.getElementById('vTitle'),
+                linkEmpty: document.getElementById('vLinkEmpty'),
+                linkExt: document.getElementById('vLinkExt'),
+                hrefDup: document.getElementById('vHrefDup'),
+                titleDup: document.getElementById('vTitleDup'),
+                search: document.getElementById('vSearch'),
+                date: document.getElementById('vDate'),
+                image: document.getElementById('vImage')
+            };
+
+            const DEFAULT_IMG = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600';
+            let localImageBase64 = ''; // Cihazdan yüklenen resmin verisi tutulacak
+
+            function turkishDate(isoStr) {
+                if (!isoStr) return 'Tarih seçilmedi';
+                const months = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+                const [y, m, d] = isoStr.split('-').map(Number);
+                if (!y || !m || !d) return 'Tarih seçilmedi';
+                return `${String(d).padStart(2,'0')} ${months[m-1]} ${y}`;
+            }
+
+            function slugify(str) {
+                const map = { 'ç':'c','ğ':'g','ı':'i','ö':'o','ş':'s','ü':'u','Ç':'c','Ğ':'g','İ':'i','Ö':'o','Ş':'s','Ü':'u' };
+                return str.replace(/[çğıöşüÇĞİÖŞÜ]/g, ch => map[ch] || ch)
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/(^-|-$)/g, '');
+            }
+
+            function buildSearchTerms(raw) {
+                if (!raw) return '';
+                return raw.split(',')
+                    .map(k => k.trim().toLocaleLowerCase('tr-TR'))
+                    .filter(Boolean)
+                    .join(' ');
+            }
+
+            function escapeHtml(str) {
+                const d = document.createElement('div');
+                d.textContent = str || '';
+                return d.innerHTML;
+            }
+
+            function currentValues() {
+                const rawTitle = els.title.value.trim();
+                const title = rawTitle || 'Başlık burada görünecek';
+                const excerpt = els.excerpt.value.trim() || 'Özet burada görünecek.';
+                const category = els.category.value;
+                const dateVal = els.date.value;
+                
+                // Cihazdan resim seçilmişse onu kullan, yoksa URL girdisini kullan
+                const rawImage = localImageBase64 || els.image.value.trim();
+                const image = rawImage || DEFAULT_IMG;
+                
+                let link = els.link.value.trim();
+                if (!link && rawTitle) link = slugify(rawTitle) + '.html';
+                if (link && !link.endsWith('.html') && !link.startsWith('http')) link += '.html';
+                const searchTerms = buildSearchTerms(els.keywords.value);
+                return { title, excerpt, category, dateVal, image, link, searchTerms, rawTitle, rawImage, rawLink: els.link.value.trim() };
+            }
+
+            function runValidator(v) {
+                const existingCards = Array.from(els.grid.querySelectorAll('.post-card'));
+                const existingHrefs = existingCards.map(c => c.getAttribute('href') ? c.getAttribute('href').trim() : '');
+                const existingTitles = existingCards.map(c => c.querySelector('h3') ? c.querySelector('h3').textContent.trim().toLowerCase() : '');
+
+                updateValidatorItem(vEls.title, !!v.rawTitle, v.rawTitle ? '✓ Başlık Girildi' : '✗ Başlık Boş');
+                updateValidatorItem(vEls.linkEmpty, !!v.rawLink, v.rawLink ? '✓ Dosya Adı Girildi' : '✗ Dosya Adı Boş');
+
+                const endsWithHtml = v.rawLink.toLowerCase().endsWith('.html');
+                updateValidatorItem(vEls.linkExt, endsWithHtml, endsWithHtml ? '✓ .html ile Bitiyor' : '✗ .html ile Bitmeli');
+
+                const isHrefDuplicate = v.rawLink && existingHrefs.includes(v.link);
+                updateValidatorItem(vEls.hrefDup, !isHrefDuplicate, isHrefDuplicate ? '✗ Bu Bağlantı (Href) Gridde Zaten Var' : '✓ Bağlantı Benzersiz');
+
+                const isTitleDuplicate = v.rawTitle && existingTitles.includes(v.rawTitle.toLowerCase());
+                updateValidatorItem(vEls.titleDup, !isTitleDuplicate, isTitleDuplicate ? '✗ Bu Başlık Gridde Zaten Var' : '✓ Başlık Benzersiz');
+
+                updateValidatorItem(vEls.search, !!v.searchTerms, v.searchTerms ? '✓ Data-Search Dolu' : '✗ Anahtar Kelimeler (Data-Search) Boş');
+                updateValidatorItem(vEls.date, !!v.dateVal, v.dateVal ? '✓ Tarih Seçildi' : '✗ Tarih Seçilmedi');
+                updateValidatorItem(vEls.image, !!v.rawImage, v.rawImage ? '✓ Görsel Girildi/Yüklendi' : '✗ Görsel Boş (Varsayılan Kullanılıyor)');
+            }
+
+            function updateValidatorItem(el, isValid, text) {
+                el.textContent = text;
+                if (isValid) {
+                    el.className = 'validator-item success';
+                    el.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${text}`;
+                } else {
+                    el.className = 'validator-item danger';
+                    el.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> ${text}`;
+                }
+            }
+
+            function updatePreview() {
+                const v = currentValues();
+                els.pCover.style.backgroundImage = `url('${v.image}')`;
+                els.pCat.textContent = v.category;
+                els.pTitle.textContent = v.title;
+                els.pExcerpt.textContent = v.excerpt;
+                els.pMeta.textContent = turkishDate(v.dateVal);
+                return v;
+            }
+
+            function buildCode(v) {
+                const dataCat = v.category.toLocaleLowerCase('tr-TR');
+                const searchAttr = v.searchTerms ? ` data-search="${escapeHtml(v.searchTerms)}"` : '';
+                return `<a class="post-card" href="${escapeHtml(v.link)}" data-category="${escapeHtml(dataCat)}"${searchAttr}>
+    <div class="post-cover" style="background-image: url('${escapeHtml(v.image)}');"></div>
+    <div class="post-body">
+        <span class="post-cat">${escapeHtml(v.category)}</span>
+        <h3>${escapeHtml(v.title)}</h3>
+        <p class="post-excerpt">${escapeHtml(v.excerpt)}</p>
+        <div class="post-meta">${turkishDate(v.dateVal)}</div>
+    </div>
+</a>`;
+            }
+
+            function refreshAll() {
+                const v = updatePreview();
+                els.code.value = buildCode(v);
+                runValidator(v);
+            }
+
+            // Dosya yükleme olayı dinleyicisi
+            els.file.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        localImageBase64 = event.target.result; // Resmi Base64 dizesine çevir
+                        els.image.value = ""; // URL alanını temizle ki karışıklık olmasın
+                        refreshAll();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // URL inputuna elle giriş yapıldığında cihazdan yüklenen veriyi temizle
+            els.image.addEventListener('input', () => {
+                if (els.image.value.trim() !== "") {
+                    localImageBase64 = "";
+                    els.file.value = ""; 
+                }
+                refreshAll();
+            });
+
+            els.toggle.addEventListener('click', () => {
+                els.card.classList.toggle('collapsed');
+            });
+
+            els.previewBtn.addEventListener('click', refreshAll);
+            [els.title, els.excerpt, els.category, els.date, els.link, els.keywords].forEach(el => {
+                el.addEventListener('input', refreshAll);
+            });
+
+            els.addBtn.addEventListener('click', () => {
+                const v = updatePreview();
+                els.code.value = buildCode(v);
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = buildCode(v);
+                const newCard = wrapper.firstElementChild;
+                els.grid.insertBefore(newCard, els.grid.firstChild);
+                els.note.textContent = 'Yeni kart geçici olarak grid\'in en başına eklendi (yalnızca bu oturum için önizleme). Kalıcı hale getirmek için kodu kopyalayıp HTML dosyanıza yapıştırın.';
+                els.note.classList.add('gen-success');
+                refreshAll();
+            });
+
+            els.copyBtn.addEventListener('click', () => {
+                refreshAll();
+                els.code.select();
+                navigator.clipboard.writeText(els.code.value).then(() => {
+                    els.note.textContent = 'Kod panoya kopyalandı. blog-grid içine yapıştırabilirsiniz.';
+                    els.note.classList.add('gen-success');
+                }).catch(() => {
+                    els.note.textContent = 'Kopyalama başarısız oldu, kodu manuel olarak seçip kopyalayın.';
+                    els.note.classList.remove('gen-success');
+                });
+            });
+
+            refreshAll();
+        })();
+    </script>
+
+	<script>
+ window.difyChatbotConfig = {
+  token: 'm9msFftlLZCRyPBD',
+  baseUrl: 'https://ai.btugecerken.com',
+  inputs: {},
+  systemVariables: {},
+  userVariables: {},
+ }
+</script>
+<script
+ src="https://ai.btugecerken.com/embed.min.js"
+ id="m9msFftlLZCRyPBD"
+ defer>
+</script>
+<style>
+  #dify-chatbot-bubble-button {
+    background-color: #1C64F2 !important;
+  }
+  #dify-chatbot-bubble-window {
+    width: 24rem !important;
+    height: 40rem !important;
+  }
+</style>
+</body>
+</html>

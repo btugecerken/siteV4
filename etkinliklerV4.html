@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Etkinliklerimiz | Geçerken Topluluğu</title>
+<link href="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Syne:wght@400;600;700;800&amp;family=Noto+Serif+TR:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    :root {
+      --emerald:    #1a5c3a;
+      --emerald-mid:#2d7a52;
+      --emerald-lt: #4caf80;
+      --gold:       #c9a84c;
+      --gold-lt:    #e8c97a;
+      --cream:      #faf6ef;
+      --ink:        #1a1a18;
+      --ink-soft:   #3d3d38;
+      --muted:      #7a7a72;
+      --white:      #ffff;
+      --shadow:     0 8px 40px rgba(26,92,58,0.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif TR', serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(26,92,58,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(201,168,76,0.07) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(250,246,239,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .logo-wrap {
+      display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0;
+    }
+    .logo-wrap img { height: 44px; width: 44px; object-fit: contain; }
+    .logo-text { line-height: 1.2; }
+    .logo-text .univ {
+      display: block; font-family: 'Syne', sans-serif; font-size: 9.5px;
+      font-weight: 700; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase;
+    }
+    .logo-text .comm {
+      display: block; font-family: 'Syne', sans-serif; font-size: 14px;
+      font-weight: 800; color: var(--emerald); letter-spacing: 0.04em;
+    }
+
+    nav { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+    nav a {
+      font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+      text-decoration: none; padding: 8px 14px; border-radius: 6px; transition: all .2s;
+    }
+    nav a:hover, nav a.active { color: var(--emerald); background: rgba(26,92,58,0.07); }
+    
+    .btn-login {
+      color: var(--emerald) !important; border: 1.5px solid var(--emerald) !important;
+      border-radius: 50px !important; padding: 7px 18px !important; margin-left: 10px;
+    }
+    .btn-login:hover { background: var(--emerald) !important; color: var(--white) !important; }
+
+    /* ════ MOBİL MENÜ BUTONU (MASAÜSTÜNDE GİZLİ) ════ */
+    #mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    #mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; transition: 0.3s ease; }
+
+    .hero-section {
+      padding: 160px 28px 80px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-title {
+      font-family: 'Amiri', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero-title i { color: var(--gold); }
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .filters-section {
+      max-width: 1180px;
+      margin: 0 auto 40px;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .search-bar { width: 100%; max-width: 500px; position: relative; }
+    .search-bar input {
+      width: 100%; padding: 16px 24px 16px 48px; border-radius: 50px;
+      border: 1px solid rgba(201,168,76,0.3); background: var(--white);
+      font-family: 'Noto Serif TR', serif; font-size: 15px; color: var(--ink);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04); outline: none; transition: all 0.3s ease;
+    }
+    .search-bar input:focus { border-color: var(--emerald); box-shadow: 0 4px 20px rgba(26,92,58,0.1); }
+    .search-bar i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+
+    .category-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .filter-btn {
+      padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(26,92,58,0.15);
+      background: transparent; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+      color: var(--emerald); cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .filter-btn:hover { background: rgba(26,92,58,0.05); }
+    .filter-btn.active { background: var(--emerald); color: var(--white); border-color: var(--emerald); }
+
+    .events-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px 100px;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .event-card {
+      background: var(--white); border-radius: 20px; border: 1px solid rgba(201,168,76,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03); padding: 30px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; flex-direction: column; position: relative; overflow: hidden;
+    }
+    .event-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+    }
+    .event-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-color: transparent; }
+    .event-card:hover::after { transform: scaleX(1); }
+
+    .category-badge {
+      display: inline-block; font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.1);
+      padding: 6px 12px; border-radius: 50px; border: 1px solid rgba(201,168,76,0.2); align-self: flex-start; margin-bottom: 16px;
+    }
+
+    .event-title { font-family: 'Amiri', serif; font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 14px; }
+    .event-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; font-family: 'Syne', sans-serif; font-size: 13px; color: var(--emerald-mid); }
+    .event-meta span { display: flex; align-items: center; gap: 8px; }
+    .event-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+
+    .read-more-link {
+      display: inline-flex; align-items: center; margin-top: auto; font-family: 'Syne', sans-serif;
+      font-size: 13.5px; font-weight: 700; color: var(--emerald); text-decoration: none;
+      text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease;
+    }
+    .read-more-link i { margin-left: 6px; transition: transform 0.3s ease; }
+    .read-more-link:hover { color: var(--gold); }
+    .read-more-link:hover i { transform: translateX(4px); }
+
+    .no-results {
+      grid-column: 1 / -1; text-align: center; padding: 60px 20px; font-size: 18px; color: var(--muted);
+      border: 1px dashed rgba(201,168,76,0.3); border-radius: 16px; background: rgba(255,255,255,0.5);
+    }
+
+    /* ════ MOBİL GÖRÜNÜM (RESPONSIVE) DÜZENLEMELERİ ════ */
+    @media (max-width: 992px) {
+      .header-inner { padding: 0 20px; }
+      #mobile-menu-btn { display: block; margin-left: auto; }
+      
+      nav#main-nav { 
+        display: none; /* Başlangıçta gizli */
+        position: absolute; 
+        top: 72px; /* Header'ın hemen altında */
+        left: 0; 
+        right: 0; 
+        background: rgba(250,246,239,0.98); 
+        backdrop-filter: blur(10px);
+        flex-direction: column; 
+        padding: 20px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+        border-bottom: 1px solid rgba(201,168,76,0.25);
+      }
+      
+      /* JS ile eklenecek açılma class'ı */
+      nav#main-nav.menu-acik { 
+        display: flex !important; 
+      }
+      
+      nav#main-nav a { width: 100%; text-align: center; padding: 12px 14px; }
+      .btn-login { margin-left: 0 !important; margin-top: 10px; }
+      .hero-section { padding-top: 120px; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER (KURAL -1- YAPISI TAMAMEN KORUNDU) ═══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="https://cdn1.site-media.eu/images/114/22934790/GeerkenLogo-Photoroom-82aMDiSMSNM52OeysD1XRQ-EgWrwxwoIVNv8WhyNw0qWA.png" alt="BTÜ Geçerken">
+      <div class="logo-text">
+        <span class="univ">Bursa Teknik Üniversitesi</span>
+        <span class="comm">Geçerken Topluluğu</span>
+      </div>
+    </a>
+
+    <nav id="main-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="etkinlikler.html" class="active">Etkinlikler</a>
+      <a href="btugecerkenblog.html">BTU Geçerken BLOG</a>
+      <a href="https://btugecerkenai.btugecerken.com">BTU GEÇERKEN AI</a>
+      <a href="ekibimiz.html">Ekibimiz</a>
+      <a href="https://account.btugecerken.com" target="_blank" class="btn-login">BTU GEÇERKEN ACCOUNT</a>
+    </nav>
+
+    <button id="mobile-menu-btn" aria-label="Menüyü aç/kapat">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<!-- ═══ HEADER BİTİŞ ═══ -->
+
+<main>
+  <section class="hero-section">
+    <h1 class="hero-title">Etkinliklerimiz <i>ve</i> Programlar</h1>
+    <p class="hero-subtitle">Geçerken topluluğu olarak gerçekleştirdiğimiz tüm sosyal, kültürel ve manevi etkinlikleri akademik yıllara göre keşfedin.</p>
+  </section>
+
+  <section class="filters-section">
+    <div class="search-bar">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Etkinlik ara... (Örn: İznik, İftar, Filistin)">
+    </div>
+    
+    <div class="category-filters" id="categoryFilters">
+      <button class="filter-btn active" data-year="all">Tüm Yıllar</button>
+      <button class="filter-btn" data-year="2026/2027">2026/2027</button>
+      <button class="filter-btn" data-year="2025/2026">2025/2026</button>
+      <button class="filter-btn" data-year="2024/2025">2024/2025</button>
+    </div>
+  </section>
+
+  <section class="events-grid" id="eventsGrid">
+    <!-- Events injected by JS -->
+  </section>
+</main>
+
+<!-- JS: ETKİNLİK SİSTEMİ -->
+<script>
+  const events = [
+    { id: 1, title: "Kampüs İntifada", academicYear: "2025/2026", category: "Toplumsal Duyarlılık", date: "2-14 Haziran", location: "BTÜ Mimar Sinan Yerleşkesi", desc: "Filistin halkına destek amacıyla düzenlenen farkındalık etkinliği.", tags: ["filistin", "gazze", "kampüs", "intifada", "dayanışma"], link: "kampus-intifada-2526.html" },
+    { id: 2, title: "İznik Manevi Gezi", academicYear: "2025/2026", category: "Manevi", date: "20 Mayıs", location: "İznik", desc: "İslam medeniyetinin önemli merkezlerinden biri olan İznik'e kültürel gezi.", tags: ["iznik", "manevi", "gezi", "osmanlı", "kültür"], link: "iznik-manevi-gezi-2526.html" },
+    { id: 3, title: "Bir Şiir Bir Direniş", academicYear: "2025/2026", category: "Edebiyat", date: "18 Mayıs", location: "A Blok Yeşil Salon", desc: "Şiir dinletisi ve ödül töreni.", tags: ["şiir", "edebiyat", "yarışma", "direniş"], link: "bir-siir-bir-direnis-2526.html" },
+    { id: 4, title: "Köy Okulu Ziyareti", academicYear: "2025/2026", category: "Sosyal Sorumluluk", date: "13 Mayıs", location: "Harmancık", desc: "Köy okulunda öğrencilerle gerçekleştirilen sosyal sorumluluk etkinliği.", tags: ["çocuk", "köy okulu", "sosyal sorumluluk", "harmancık"], link: "koy-okulu-ziyareti-2526.html" },
+    { id: 5, title: "Tarihe İz Bırakan Kadınlar", academicYear: "2025/2026", category: "Edebiyat", date: "15 Nisan", location: "Sinan Durmaz Konferans Salonu", desc: "Okur-Yazar Buluşmaları kapsamında gerçekleştirilen konferans.", tags: ["kadın", "konferans", "tarih"], link: "tarihe-iz-birakan-kadinlar-2526.html" },
+    { id: 6, title: "Zulme Karşı Tek Vücut!", academicYear: "2025/2026", category: "Toplumsal Duyarlılık", date: "7 Nisan", location: "Mimar Sinan Kampüsü", desc: "Filistin konusunda farkındalık oluşturmak amacıyla düzenlenen program.", tags: ["filistin", "gazze", "dayanışma"], link: "zulme-karsi-tek-vucut-2526.html" },
+    { id: 7, title: "İlham Veren Buluşmalar", academicYear: "2025/2026", category: "Edebiyat", date: "7 Nisan", location: "Sinan Durmaz Konferans Salonu", desc: "Prof. Dr. Soner Duman ile gerçekleştirilen söyleşi.", tags: ["kitap", "söyleşi", "okur yazar"], link: "ilham-veren-bulusmalar-2526.html" },
+    { id: 8, title: "Küreselleşme ve Çokkültürlülük", academicYear: "2025/2026", category: "Sosyoloji", date: "2 Nisan", location: "A Blok Beyaz Salon", desc: "Modern dünyanın çokkültürlü yapısını sosyolojik açıdan ele aldığımız konferans.", tags: ["sosyoloji", "küreselleşme", "toplum"], link: "kuresellesme-coklkulturculuk-2526.html"  },
+    { id: 9, title: "İftar Sofrası Buluşması", academicYear: "2025/2026", category: "Manevi", date: "6 Mart", location: "Bursa Uludağ Üniversitesi", desc: "Ramazan ayında kardeşlik soframızda öğrencilerle bir araya geldik.", tags: ["iftar", "ramazan", "manevi"], link: "sofrasi-bulusmasi-2526.html" },
+    { id: 10, title: "Sosyolojik Kurum Olarak Aile", academicYear: "2025/2026", category: "Sosyoloji", date: "25 Aralık", location: "B Blok 1. Kat Sosyal Alan", desc: "Prof. Dr. Vejdi Bilgin ile aile kurumunu sosyolojik açıdan değerlendirdik.", tags: ["hasbihal", "aile", "sosyoloji"], link: "sosyolojik-kurum-olarak-aile-2526.html" },
+    { id: 11, title: "Aile Kurumunda İktisadi Bakış", academicYear: "2025/2026", category: "Sosyoloji", date: "18 Aralık", location: "B Blok 1. Kat Sosyal Alan", desc: "Aile kurumuna iktisadi perspektiften bakış.", tags: ["hasbihal", "aile", "iktisat"], link: "aile-kurumunda-iktisadi-bakis-2526.html" },
+    { id: 12, title: "1. Hasbihal: Din ve Aile", academicYear: "2025/2026", category: "Manevi", date: "11 Aralık", location: "B Blok Yeşil Salon", desc: "Hasbihal serimizin ilk programı.", tags: ["hasbihal", "sohbet", "manevi"], link: "din-ve-aile-2526.html" },
+    { id: 13, title: "Tanışma Etkinliği", academicYear: "2025/2026", category: "Sosyal", date: "7 Aralık", location: "BTÜ Topluluk Odası", desc: "Yeni üyelerimizle tanışma programı.", tags: ["tanışma", "sosyal", "üyeler"], link: "tanisma-2526.html" },
+    { id: 14, title: "İkindi Buluşmaları", academicYear: "2025/2026", category: "Manevi", date: "16 Kasım", location: "Yeşil Camii", desc: "Kardeşlerimizle birlikte ikindi namazı sonrası sohbet ve çay buluşması.", tags: ["ikindi", "namaz", "manevi", "sohbet"], link: "ikindi-bulusmalari-2526.html" },
+    { id: 15, title: "Milli Ağaçlandırma Günü", academicYear: "2025/2026", category: "Doğa", date: "11 Kasım", location: "BTÜ Kampüsü", desc: "Üniversite kampüsünde fidan dikme etkinliği.", tags: ["ağaç", "fidan", "doğa", "kampüs"], link: "milli-agaclandirma-gunu-2526.html" },
+    { id: 16, title: "Dönemin Planlanması", academicYear: "2024/2025", category: "Sosyal", date: "28 Ekim 2024", location: "TDV Şehreküstü Genç Merkezi", desc: "Yönetim kurulu üyeleri planlama toplantısında kahvaltıda bir araya geldi.", tags: ["toplantı", "planlama", "kahvaltı"], link: "donem-planlamasi-2425.html" },
+    { id: 17, title: "Tanışma Etkinliği", academicYear: "2024/2025", category: "Sosyal", date: "1 Kasım 2024", location: "İbrahim Paşa Diyanet Genç Ofis", desc: "Üniversite öğrencilerimizle kaynaşıp tanıştığımız güzel bir etkinlik.", tags: ["tanışma", "gençlik"], link: "tanisma-etkinligi-2425.html" },
+    { id: 18, title: "Milli Ağaçlandırma Günü", academicYear: "2024/2025", category: "Doğa", date: "11 Kasım 2024", location: "Uludağ Üniversitesi", desc: "Milli Ağaçlandırma Günü’nde fidan dikme etkinliğimizi gerçekleştirdik.", tags: ["fidan", "doğa", "çevre"], link: "milli-agaclandirma-gunu-2425.html" },
+    { id: 19, title: "Çanta Boyama Atölyesi", academicYear: "2024/2025", category: "Sanat", date: "15 Kasım 2024", location: "Bursa", desc: "Organizasyonumuz ile hanımlara özel Çanta Boyama Atölyesi düzenledik.", tags: ["atölye", "boyama", "sanat", "hanımlara özel"], link: "canta-boyama-atolyesi-2425.html" },
+    { id: 20, title: "İkindi Buluşması: Emir Sultan", academicYear: "2024/2025", category: "Manevi", date: "20 Kasım 2024", location: "Emir Sultan Camii", desc: "Mustafa Kara hocamızın anlatımı ile Emir Sultan hazretleri hasbihali.", tags: ["ikindi", "emir sultan", "manevi"], link: "ikindi-bulusmalari-2425.html" },
+    { id: 21, title: "Hasbihal: Ahlak Nedir?", academicYear: "2024/2025", category: "Sosyoloji", date: "5 Aralık 2024", location: "Yıldırım Beyazıt Yerleşkesi", desc: "Doç. Dr. Mehmet Ulukütük eşliğinde Ahlak Nedir konusunu konuştuk.", tags: ["hasbihal", "ahlak", "farkındalık"], link: "ahlak-nedir-2425.html" },
+    { id: 22, title: "Sosyal Medya Ahlakı", academicYear: "2024/2025", category: "Sosyoloji", date: "12 Aralık 2024", location: "BTÜ Kampüsü", desc: "Ekber Şah Ahmedi ile sosyal medya ahlakını ele aldığımız sohbet.", tags: ["sosyal medya", "ahlak", "sohbet"], link: "sosyal-medya-ahlaki-2425.html" },
+    { id: 23, title: "İktisat Ahlakı", academicYear: "2024/2025", category: "Sosyoloji", date: "19 Aralık 2024", location: "Sosyal Alan", desc: "İktisat ve ahlak ilişkisi üzerine Fahriye Afacan ile sohbet.", tags: ["iktisat", "ahlak", "sohbet"], link: "iktisat-ahlaki-2425.html" },
+    { id: 24, title: "Cuma Seminerleri Başladı", academicYear: "2024/2025", category: "Manevi", date: "20 Aralık 2024", location: "Kadın Mescidi", desc: "Kadınlara yönelik ilim ve muhabbet dolu Cuma Seminerlerine başladık.", tags: ["cuma", "seminer", "manevi"], link: "cuma-seminerleri-2425.html" },
+    { id: 25, title: "Toplumsal Ahlak", academicYear: "2024/2025", category: "Sosyoloji", date: "26 Aralık 2024", location: "Sosyal Alan", desc: "Toplumsal Ahlak üzerine Doç. Dr. Rıdvan Şimşek ile bir araya geldik.", tags: ["toplumsal ahlak", "etik"], link: "toplumsal-ahlak-2425.html" },
+    { id: 26, title: "Kudüs Konferansı", academicYear: "2024/2025", category: "Toplumsal Duyarlılık", date: "3 Ocak 2025", location: "Diyanet Genç Ofis", desc: "Kudüs’ün dünya barışı için taşıdığı derin anlamı konuştuk.", tags: ["kudüs", "barış", "konferans"], link: "kudus-konferansi-2425.html" },
+    { id: 27, title: "Çöreler İlkokulu Ziyareti", academicYear: "2024/2025", category: "Sosyal Sorumluluk", date: "14 Ocak 2025", location: "Orhaneli", desc: "Köy okulunu ziyaret ettik, yüz boyama ve oyunlarla çocukları güldürdük.", tags: ["köy okulu", "ziyaret", "sosyal sorumluluk"], link: "koy-okulu-ziyareti-2425.html" },
+    { id: 28, title: "Mus'ab Ağlarken", academicYear: "2024/2025", category: "Sanat", date: "12 Mart 2025", location: "Mimar Sinan Yerleşkesi", desc: "Geçerken Topluluğu gönüllü öğrencileri tarafından tiyatro sahnelendi.", tags: ["tiyatro", "sanat", "gösteri"], link: "musab-aglarken-2425.html" },
+    { id: 29, title: "İftar Yemeği Buluşması", academicYear: "2024/2025", category: "Manevi", date: "21 Mart 2025", location: "Bursa TDV", desc: "Ramazan’ın manevi atmosferinde iftar yemeğinde bir araya geldik.", tags: ["iftar", "ramazan", "manevi"], link: "iftar-yemegi-bulusmasi-2425.html" },
+    { id: 30, title: "Tefekkür Yürüyüşü", academicYear: "2024/2025", category: "Doğa", date: "25 Nisan 2025", location: "Zeyniler Köyü", desc: "İbrahim Konak Hocamızın rehberliğinde doğayla iç içe tefekkür yürüyüşü.", tags: ["doğa", "yürüyüş", "tefekkür"], link: "tefekkur-yuruyusu-2425.html" },
+    { id: 31, title: "Çadır Nöbetine Destek", academicYear: "2024/2025", category: "Toplumsal Duyarlılık", date: "30 Nisan 2025", location: "Mete Cengiz Salonu", desc: "Filistin’de yaşanan zulme dikkat çekmek için çadır nöbetine destek verdik.", tags: ["filistin", "çadır", "dayanışma"], link: "cadir-nobetine-destek-2425.html" },
+    { id: 32, title: "İslam Ekonomisi", academicYear: "2024/2025", category: "Sosyoloji", date: "22 Mayıs 2025", location: "BTÜ Kampüsü", desc: "Faizsiz Bir Sistem Üzerine Mülahasalar konulu seminer programı.", tags: ["islam ekonomisi", "seminer", "iktisat"], link: "islam-ekonomisi-2425.html" },
+    { id: 33, title: "Çocuk Evleri Ziyareti", academicYear: "2024/2025", category: "Sosyal Sorumluluk", date: "25 Mayıs 2025", location: "Darulkurra Genç Ofis", desc: "Sırameşeler Çocuk Evlerindeki kızlarımıza yönelik düzenlenen buluşma.", tags: ["sosyal sorumluluk", "çocuk", "ziyaret"], link: "cocuk-evleri-ziyareti-2425.html" },
+    { id: 34, title: "Irgandı Köprüsü Atölye", academicYear: "2024/2025", category: "Sanat", date: "26 Mayıs 2025", location: "Irgandı Köprüsü", desc: "Tarihi Irgandı Köprüsü alanında piknik ve sulu boya atölyesi gerçekleştirdik.", tags: ["piknik", "sulu boya", "sanat", "atölye"], link: "irgandi-koprusu-atolye-2425.html" }
+  ];
+
+  let currentYear = 'all';
+  let searchQuery = '';
+
+  const eventsGrid = document.getElementById('eventsGrid');
+  const searchInput = document.getElementById('searchInput');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+
+  function getFilteredEvents() {
+    let filtered = events;
+    if(currentYear !== 'all') filtered = filtered.filter(val => val.academicYear === currentYear);
+    if(searchQuery !== '') {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(val => 
+        val.title.toLowerCase().includes(q) || val.desc.toLowerCase().includes(q) ||
+        val.location.toLowerCase().includes(q) || val.tags.some(tag => tag.toLowerCase().includes(q))
+      );
+    }
+    return filtered;
+  }
+
+  function renderEvents(eventsToRender) {
+    eventsGrid.innerHTML = '';
+    if(eventsToRender.length === 0) {
+      eventsGrid.innerHTML = '<div class="no-results">Bu kriterlere uyan etkinlik bulunamadı.</div>';
+      return;
+    }
+    eventsToRender.forEach(event => {
+      const card = document.createElement('div');
+      card.className = 'event-card';
+      const eventLink = event.link;
+      card.innerHTML = `
+        <div class="card-content" style="display:flex; flex-direction:column; height: 100%;">
+          <span class="category-badge">${event.category}</span>
+          <h3 class="event-title">${event.title}</h3>
+          <div class="event-meta">
+            <span><i class="fa-regular fa-calendar"></i> ${event.date}</span>
+            <span><i class="fa-solid fa-graduation-cap"></i> ${event.academicYear}</span>
+            <span><i class="fa-solid fa-location-dot"></i> ${event.location}</span>
+          </div>
+          <p class="event-desc">${event.desc}</p>
+          <a href="${eventLink}" class="read-more-link">
+            Etkinliği İncele <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      `;
+      eventsGrid.appendChild(card);
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      currentYear = e.target.getAttribute('data-year');
+      renderEvents(getFilteredEvents());
+    });
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value.trim();
+    renderEvents(getFilteredEvents());
+  });
+
+  renderEvents(getFilteredEvents());
+</script>
+
+<!-- JS: MOBİL MENÜ HAREKETİ -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mainNav = document.getElementById('main-nav');
+
+    if (mobileBtn && mainNav) {
+      mobileBtn.addEventListener('click', function() {
+        mainNav.classList.toggle('menu-acik');
+        // Hamburger ikonu animasyonu
+        const spans = this.querySelectorAll('span');
+        if (mainNav.classList.contains('menu-acik')) {
+          spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+        } else {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+    }
+  });
+</script>
+
+<!-- DIFY CHATBOT -->
+<script>
+ window.difyChatbotConfig = {
+  token: 'YV8QJYnAjFp6afDX',
+  baseUrl: 'https://ai.btugecerken.com'
+ }
+</script>
+<script src="https://ai.btugecerken.com/embed.min.js" id="YV8QJYnAjFp6afDX" defer></script>
+<style>
+  #dify-chatbot-bubble-button { background-color: #1a5c3a !important; }
+  #dify-chatbot-bubble-window { width: 24rem !important; height: 40rem !important; }
+</style>
+
+</body>
+</html>

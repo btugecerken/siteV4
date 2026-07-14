@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Ana Sayfa -->
+  <url>
+    <loc>https://btugecerken.com/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Kurumsal ve Rehber Sayfalar -->
+  <url><loc>https://btugecerken.com/etkinlikler.html</loc><lastmod>2026-07-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://btugecerken.com/btugecerkenblog.html</loc><lastmod>2026-07-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://btugecerken.com/ekibimiz.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://btugecerken.com/btu-ekampus.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://btugecerken.com/btu-obs.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://btugecerken.com/bursada-ogrenci-olmak.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://btugecerken.com/bursa-ogrenci-dostu-bir-sehir-mi.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://btugecerken.com/bys-btu.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://btugecerken.com/yerleske-rehberi.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- 2025-2026 Etkinlikleri -->
+  <url><loc>https://btugecerken.com/aile-kurumunda-iktisadi-bakis-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/bir-siir-bir-direnis-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/din-ve-aile-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/ikindi-bulusmalari-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/ilham-veren-bulusmalar-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/iznik-manevi-gezi-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/kampus-intifada-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/koy-okulu-ziyareti-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/kuresellesme-cokkulturluluk-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/milli-agaclandirma-gunu-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/sofrasi-bulusmasi-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/sosyolojik-kurum-olarak-aile-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/tanisma-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/tarihe-iz-birakan-kadinlar-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+  <url><loc>https://btugecerken.com/zulme-karsi-tek-vucut-2526.html</loc><lastmod>2026-07-05</lastmod><priority>0.5</priority></url>
+
+  <!-- 2024-2025 Etkinlikleri -->
+  <url><loc>https://btugecerken.com/ahlak-nedir-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/cadir-nobetine-destek-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/canta-boyama-atolyesi-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/cocuk-evleri-ziyareti-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/cuma-seminerleri-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/donem-planlamasi-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/iftar-yemegi-bulusmasi-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/ikindi-bulusmalari-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/iktisat-ahlaki-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/irgandi-koprusu-atolye-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/islam-ekonomisi-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/koy-okulu-ziyareti-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/kudus-konferansi-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/milli-agaclandirma-gunu-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/musab-aglarken-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/sosyal-medya-ahlaki-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/tanisma-etkinligi-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/tefekkur-yuruyusu-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+  <url><loc>https://btugecerken.com/toplumsal-ahlak-2425.html</loc><lastmod>2026-07-05</lastmod><priority>0.4</priority></url>
+
+</urlset>
