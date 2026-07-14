@@ -51,9 +51,6 @@ Bu sürüm boyunca;
 - sayfa yapıları yeniden düzenlendi,
 - SEO çalışmaları geliştirildi,
 - sitemap yapısı oluşturuldu,
-- favicon ve arama motoru uyumluluğu iyileştirildi,
-- kod yapısı sadeleştirildi,
-- mobil uyumluluk artırıldı.
 
   ## V4 Neden Önemlidir?
 
